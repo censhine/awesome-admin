@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import Address from '@/components/aw-address'
+import Address from '@/components/zis-address'
 
 export default {
   props: {

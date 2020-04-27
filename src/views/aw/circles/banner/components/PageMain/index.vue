@@ -1,5 +1,5 @@
 <template>
-  <div class="aw-p">
+  <div class="cs-p">
     <el-table
       border
       v-loading="loading"
@@ -218,14 +218,14 @@
           size="small">修改</el-button>
       </div>
 
-      <aw-storage
+      <cs-storage
         ref="storage"
         style="display: none"
         :limit="1"
         @confirm="_getStorageFileList">
-      </aw-storage>
+      </cs-storage>
 
-      <aw-upload
+      <cs-upload
         style="display: none"
         ref="upload"
         type="slot"
@@ -233,7 +233,7 @@
         :limit="1"
         :multiple="false"
         @confirm="_getUploadFileList">
-      </aw-upload>
+      </cs-upload>
     </el-dialog>
   </div>
 </template>
@@ -249,11 +249,13 @@ import {
 import util from '@/utils/util'
 import { getGoodsCategoryItem } from '@/api/goods/category'
 
+import {delCircleList,getCircleList,setCircleList} from '@/api/mock.data'
+
 export default {
   components: {
-    'select2':()=>import('@/components/aw-select2'),
-    'csUpload': () => import('@/components/aw-upload'),
-    'csStorage': () => import('@/components/aw-storage'),
+    'select2':()=>import('@/components/zis-select2'),
+    'csUpload': () => import('@/components/cs-upload'),
+    'csStorage': () => import('@/components/cs-storage'),
     'add': ()=>import('../../add')
   },
   props: {
@@ -385,10 +387,10 @@ export default {
     }
   },
   watch: {
-    tableData: {
+    tableData:{
       handler(val) {
         this.currentTableData = val
-      },
+     },
       immediate: true
     }
   },
@@ -424,7 +426,7 @@ export default {
       return idList
     },
     handleStatus(command){
-
+      this.$message.success('启用成功')
     },
     // 资源下拉框事件
     handleCommand(command) {
@@ -564,7 +566,7 @@ export default {
         if (valid) {
           this.dialogLoading = true
           Promise.all([
-            setCircleItem({ ...this.form }),
+            //setCircleItem({ ...this.form }),
             //getGoodsCategoryItem(this.form.goods_category_id)
           ])
             .then(res => {
@@ -605,7 +607,6 @@ export default {
                 })
               }
             })
-
             vm.$message.success('操作成功')
           })
       }
@@ -662,11 +663,12 @@ export default {
         .then(() => {
           delCircleList(brand_id)
             .then(() => {
-              for (let i = this.currentTableData.length - 1; i >= 0; i--) {
-                if (brand_id.indexOf(this.currentTableData[i].brand_id) !== -1) {
-                  this.currentTableData.splice(i, 1)
-                }
-              }
+              this.currentTableData.splice(val,1)
+              // for (let i = this.currentTableData.length - 1; i >= 0; i--) {
+              //   if (brand_id.indexOf(this.currentTableData[i].brand_id) !== -1) {
+              //     this.currentTableData.splice(i, 1)
+              //   }
+              // }
 
               if (this.currentTableData.length <= 0) {
                 this.$emit('refresh', true)

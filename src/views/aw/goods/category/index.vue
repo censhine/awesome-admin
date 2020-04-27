@@ -1,11 +1,11 @@
 <template>
-  <aw-container :is-back-to-top="true">
+  <d2-container :is-back-to-top="true">
     <page-main
       :loading="loading"
       :tree-data="tree"
       @refresh="handleRefresh"
       ref="main"/>
-  </aw-container>
+  </d2-container>
 </template>
 
 <script>
@@ -14,7 +14,7 @@ import axios from 'axios'
 //import { getGoodsCategoryList } from '@/api/goods/category'
 import { getCateList } from '@/api/goods/category'
 export default {
-  name: 'aw-goods-category',
+  name: 'zis-goods-category',
   components: {
     'PageMain': () => import('./components/PageMain')
   },
@@ -37,7 +37,7 @@ export default {
     // 提交查询请求
     handleSubmit() {
       this.loading = true
-      axios.get('category.json').then(res=>{
+      axios.get('/category.json').then(res=>{
         this.tree = util.formatDataToTree(res.data, 'goods_category_id')
         if (this.$refs.main) {
           this.$refs.main.filterText = ''

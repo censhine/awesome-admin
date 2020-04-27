@@ -22,6 +22,15 @@ export default {
       }
     },
     {
+      path: 'data',
+      name: `${pre}data`,
+      component: _import('demo/business/index/data'),
+      meta: {
+        ...meta,
+        title: '数据'
+      }
+    },
+    {
       path: 'table/1',
       name: `${pre}table-1`,
       component: _import('demo/business/table/1'),

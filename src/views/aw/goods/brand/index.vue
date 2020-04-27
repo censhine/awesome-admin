@@ -1,5 +1,5 @@
 <template>
-  <aw-container :is-back-to-top="true">
+  <d2-container :is-back-to-top="true">
     <page-header
       slot="header"
       :loading="loading"
@@ -21,7 +21,7 @@
       :size="page.size"
       :total="page.total"
       @change="handlePaginationChange"/>
-  </aw-container>
+  </d2-container>
 </template>
 
 <script>
@@ -30,7 +30,7 @@ import { getBrandList } from '@/api/goods/brand'
 import { getGoodsCategoryList } from '@/api/goods/category'
 
 export default {
-  name: 'aw-goods-brand',
+  name: 'zis-goods-brand',
   components: {
     'PageHeader': () => import('./components/PageHeader'),
     'PageMain': () => import('./components/PageMain'),
@@ -55,7 +55,7 @@ export default {
   mounted() {
     Promise.all([
       getGoodsCategoryList(null),
-      this.$store.dispatch('awadmin/db/databasePage', { user: true })
+      this.$store.dispatch('d2admin/db/databasePage', { user: true })
     ])
       .then(res => {
         this.cat = util.formatDataToTree(res[0].data, 'goods_category_id')

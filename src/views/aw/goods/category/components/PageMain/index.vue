@@ -1,11 +1,12 @@
 <template>
-  <div class="aw-p">
+  <div class="cs-p">
     <el-form
       :inline="true"
       size="small"
       @submit.native.prevent>
       <el-form-item>
         <el-button
+          type="primary"
           icon="el-icon-plus"
           :disabled="loading"
           @click="handleCreate('new')">创建分类</el-button>
@@ -52,9 +53,14 @@
         </el-input>
       </el-form-item>
     </el-form>
-
+    <el-divider></el-divider>
     <el-row :gutter="20">
       <el-col :span="24" v-loading="loading" >
+        <div style="display: flex">
+          <span style="flex:2; padding-left:10px; padding-bottom: 10px;">商品分类</span>
+          <span style="flex:1; text-align: left;padding-bottom: 10px;">英文名称</span>
+          <span style="flex:1; text-align: right;padding-right:10px;padding-bottom: 10px;">操作</span>
+        </div>
         <el-tree
           class="tree-scroll"
           node-key="goods_category_id"
@@ -70,18 +76,20 @@
           @node-drop="handleDrop"
           ref="tree">
           <span class="custom-tree-node action" slot-scope="{node, data}">
-            <span class="brother-showing" :class="{'status-tree': !data.status}">
-              <i v-if="auth.move" class="el-icon-sort move-tree aw-mr-5"/>
+            <span class="brother-showing" style="width: 300px;" :class="{'status-tree': !data.status}">
+              <i v-if="auth.move" class="el-icon-sort move-tree cs-mr-5"/>
               <i v-if="data.children" :class="`el-icon-${node.expanded ? 'folder-opened' : 'folder'}`"/>
               <i v-else class="el-icon-document"/>
               {{isFullName ? node.label : data.alias}}
             </span>
 
+            <span style="text-align: left;">telephone</span>
+
             <span class="active">
               <el-button
                 type="text"
                 size="mini"
-                @click.stop="handleModify('child',data.goods_category_id)">
+                @click.stop="handleChild(data.$index)">
                 创建子类
               </el-button>
 
@@ -103,7 +111,7 @@
                <el-button
                  type="text"
                  size="mini"
-                 @click.stop="handleModify(data.$index)">
+                 @click.stop="handleUpdate(data.$index)">
                 修改
               </el-button>
 
@@ -127,11 +135,23 @@
         <el-row :gutter="20">
           <el-col :span="12">
             <el-form-item
-              label="名称"
+              label="分类名称"
               prop="name">
               <el-input
                 v-model="form.name"
-                placeholder="请输入品牌名称"
+                placeholder="请输入分类名称"
+                :clearable="true"/>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row :gutter="20">
+          <el-col :span="12">
+            <el-form-item
+              label="英文名称"
+              prop="name">
+              <el-input
+                v-model="form.english_name"
+                placeholder="请输入分类英文名称"
                 :clearable="true"/>
             </el-form-item>
           </el-col>
@@ -157,14 +177,14 @@
           size="small">修改</el-button>
       </div>
 
-      <aw-storage
+      <cs-storage
         ref="storage"
         style="display: none"
         :limit="1"
         @confirm="_getStorageFileList">
-      </aw-storage>
+      </cs-storage>
 
-      <aw-upload
+      <cs-upload
         style="display: none"
         ref="upload"
         type="slot"
@@ -172,7 +192,7 @@
         :limit="1"
         :multiple="false"
         @confirm="_getUploadFileList">
-      </aw-upload>
+      </cs-upload>
 
     </el-dialog>
 
@@ -191,8 +211,8 @@ import util from '@/utils/util'
 
 export default {
   components: {
-    'csUpload': () => import('@/components/aw-upload'),
-    'csStorage': () => import('@/components/aw-storage')
+    'csUpload': () => import('@/components/cs-upload'),
+    'csStorage': () => import('@/components/cs-storage')
   },
   props: {
     treeData: {
@@ -222,7 +242,8 @@ export default {
       formLoading: false,
       textMap: {
         create: '新增分类',
-        update: '编辑分类'
+        update: '编辑分类',
+        child: '添加子分类'
       },
       dialogLoading: false,
       dialogFormVisible: false,
@@ -240,6 +261,7 @@ export default {
         move: false
       },
       form: {
+        english_name: '',
         parent_id: undefined,
         name: undefined,
         name_phonetic: undefined,
@@ -360,7 +382,7 @@ export default {
     // 弹出编辑对话框
     handleUpdate(index) {
       this.currentIndex = index
-      this.form = { ...this.currentTableData[index] }
+      this.form = { ...this.treeData[index] }
 
       this.$nextTick(() => {
         if (this.$refs.form) {
@@ -368,6 +390,20 @@ export default {
         }
 
         this.dialogStatus = 'update'
+        this.dialogLoading = false
+        this.dialogFormVisible = true
+      })
+    },
+    handleChild(index) {
+      this.currentIndex = index
+      this.form = { ...this.treeData[index] }
+
+      this.$nextTick(() => {
+        if (this.$refs.form) {
+          this.$refs.form.clearValidate()
+        }
+
+        this.dialogStatus = 'child'
         this.dialogLoading = false
         this.dialogFormVisible = true
       })
@@ -499,10 +535,6 @@ export default {
               key.forEach(value => {
                 this.$refs.tree.remove(value)
               })
-
-              this.$refs.tree.setCheckedKeys([])
-              this.handleCreate('create')
-              this.$message.success('操作成功')
             })
         })
         .catch(() => {
@@ -712,7 +744,7 @@ export default {
 </style>
 
 <style lang="scss">
-  .aw-p .el-tree-node{
+  .cs-p .el-tree-node{
     padding-top:10px;
     padding-bottom:10px;
     border:1px solid #ededed

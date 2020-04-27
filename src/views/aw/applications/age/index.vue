@@ -1,5 +1,5 @@
 <template>
-  <aw-container :is-back-to-top="true">
+  <d2-container :is-back-to-top="true">
     <page-header
       slot="header"
       :loading="loading"
@@ -14,6 +14,7 @@
       @sort="handleSort"
       @refresh="handleRefresh"/>
 
+<!--    <pagination :pageTotal="page.total" @handleCurrentChange="handleCurrentChange" @handleSizeChange="handleSizeChange"></pagination>-->
     <page-footer
       slot="footer"
       :loading="loading"
@@ -21,7 +22,7 @@
       :size="page.size"
       :total="page.total"
       @change="handlePaginationChange"/>
-  </aw-container>
+  </d2-container>
 </template>
 
 <script>
@@ -30,7 +31,6 @@ import { getBrandList } from '@/api/goods/brand'
 import { getGoodsCategoryList } from '@/api/goods/category'
 
 export default {
-  name: 'aw-applications-age',
   components: {
     'PageHeader': () => import('./components/PageHeader'),
     'PageMain': () => import('./components/PageMain'),
@@ -55,7 +55,7 @@ export default {
   mounted() {
     Promise.all([
       getGoodsCategoryList(null),
-      this.$store.dispatch('awadmin/db/databasePage', { user: true })
+      this.$store.dispatch('d2admin/db/databasePage', { user: true })
     ])
       .then(res => {
         this.cat = util.formatDataToTree(res[0].data, 'goods_category_id')
@@ -76,11 +76,30 @@ export default {
         this.$refs.header.handleFormSubmit()
       })
     },
+    // 上下分页
+    handleCurrentChange(val){
+      this.page.current = val;
+      this.getMessages()
+    },
+    // 每页显示多少条
+    handleSizeChange(val){
+      this.page.limit = val;
+      this.getMessages()
+    },
     // 分页变化改动
     handlePaginationChange(val) {
       this.page = val
       this.$nextTick(() => {
         this.$refs.header.handleFormSubmit()
+      })
+    },
+    getMessages(){
+      let param = Object.assign({},this.page)
+      getGoodsCategoryList(param).then(res => {
+        console.log(res)
+        this.loading = false;
+        this.page.total = res.data.total;
+        this.table = res.data.items;
       })
     },
     // 排序刷新

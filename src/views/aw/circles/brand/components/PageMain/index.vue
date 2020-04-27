@@ -1,5 +1,5 @@
 <template>
-  <div class="aw-p">
+  <div class="cs-p">
     <el-table
       border
       v-loading="loading"
@@ -31,9 +31,13 @@
       >
         <template slot-scope="scope">
           <el-switch
-            v-model="scope.row.is_recommend?true:false"
+            v-model="currentTableData[scope.$index].is_recommend"
+            active-value="1"
+            inactive-value="0"
             active-color="#13ce66"
-            inactive-color="#ff4949">
+            inactive-color="#ff4949"
+            @change="handleChangeSwitch(currentTableData[scope.$index].is_recommend,scope.$index)"
+          >
           </el-switch>
         </template>
       </el-table-column>
@@ -74,7 +78,7 @@
 <!--            size="mini"-->
 <!--            type="text">查看</el-button>-->
           <el-button
-            @click="handleUpdate(scope.$index)"
+            @click="handleDigi(scope.$index)"
             size="mini"
             type="text">置顶</el-button>
           <el-button
@@ -196,14 +200,14 @@
           size="small">修改</el-button>
       </div>
 
-      <aw-storage
+      <cs-storage
         ref="storage"
         style="display: none"
         :limit="1"
         @confirm="_getStorageFileList">
-      </aw-storage>
+      </cs-storage>
 
-      <aw-upload
+      <cs-upload
         style="display: none"
         ref="upload"
         type="slot"
@@ -211,7 +215,7 @@
         :limit="1"
         :multiple="false"
         @confirm="_getUploadFileList">
-      </aw-upload>
+      </cs-upload>
     </el-dialog>
   </div>
 </template>
@@ -222,9 +226,9 @@ import { getGoodsList } from '@/api/mock.data'
 
 export default {
   components: {
-    'select2':()=>import('@/components/aw-select2'),
-    'csUpload': () => import('@/components/aw-upload'),
-    'csStorage': () => import('@/components/aw-storage'),
+    'select2':()=>import('@/components/zis-select2'),
+    'csUpload': () => import('@/components/cs-upload'),
+    'csStorage': () => import('@/components/cs-storage'),
     'add': ()=>import('../../add')
   },
   props: {
@@ -391,8 +395,13 @@ export default {
       } else {
         idList.push(this.currentTableData[val].brand_id)
       }
-
       return idList
+    },
+    handleChangeSwitch(val,index){
+      this.$message.success('推荐状态更新成功')
+    },
+    handleDigi(command){
+      this.$message.success('置顶成功')
     },
     handleStatus(command){
 

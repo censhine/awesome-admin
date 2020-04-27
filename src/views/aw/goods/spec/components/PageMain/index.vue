@@ -1,10 +1,11 @@
 <template>
-  <div class="aw-p">
+  <div class="cs-p">
     <el-form
       :inline="true"
       size="small">
       <el-form-item>
         <el-button
+          type="primary"
           icon="el-icon-plus"
           :disabled="loading"
           @click="handleCreate">新增规格</el-button>

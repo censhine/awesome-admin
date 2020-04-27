@@ -1,5 +1,5 @@
 <template>
-  <div class="aw-p">
+  <div class="cs-p">
     <el-table
       border
       v-loading="loading"
@@ -85,9 +85,8 @@
         align="center"
         min-width="140">
         <template slot-scope="scope">
-
           <el-button
-            @click="handleUpdate(scope.$index)"
+            @click="$router.push({path:'/zis/circles/store/detail',query:{...scope.row}})"
             size="mini"
             type="text">查看</el-button>
 <!--          <el-button-->
@@ -217,14 +216,14 @@
           size="small">修改</el-button>
       </div>
 
-      <aw-storage
+      <cs-storage
         ref="storage"
         style="display: none"
         :limit="1"
         @confirm="_getStorageFileList">
-      </aw-storage>
+      </cs-storage>
 
-      <aw-upload
+      <cs-upload
         style="display: none"
         ref="upload"
         type="slot"
@@ -232,7 +231,7 @@
         :limit="1"
         :multiple="false"
         @confirm="_getUploadFileList">
-      </aw-upload>
+      </cs-upload>
     </el-dialog>
   </div>
 </template>
@@ -241,9 +240,9 @@
 import util from '@/utils/util'
 export default {
   components: {
-    'select2':()=>import('@/components/aw-select2'),
-    'csUpload': () => import('@/components/aw-upload'),
-    'csStorage': () => import('@/components/aw-storage'),
+    'select2':()=>import('@/components/zis-select2'),
+    'csUpload': () => import('@/components/cs-upload'),
+    'csStorage': () => import('@/components/cs-storage'),
   },
   props: {
     loading: {

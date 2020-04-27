@@ -1,10 +1,10 @@
 <template>
-  <aw-container>
-    <div class="aw-table-view">
-      <el-table :data="[{status:'待审核'}]" border class="aw-item-status">
+  <d2-container>
+    <div class="zis-table-view">
+      <el-table :data="[{status:'待审核'}]" border class="zis-item-status">
         <el-table-column prop="status"></el-table-column>
       </el-table>
-        <el-table :data="[{title:'审核详情'}]" border class="aw-item-title">
+        <el-table :data="[{title:'审核详情'}]" border class="zis-item-title">
           <el-table-column prop="title"></el-table-column>
         </el-table>
         <el-table
@@ -15,8 +15,8 @@
           <el-table-column prop="val"></el-table-column>
         </el-table>
     </div>
-    <div class="aw-table-list">
-      <el-table :data="[{title:'申请人信息'}]" border class="aw-item-title">
+    <div class="zis-table-list">
+      <el-table :data="[{title:'申请人信息'}]" border class="zis-item-title">
         <el-table-column prop="title"></el-table-column>
       </el-table>
       <el-table :data="[this.$route.query]" border>
@@ -35,7 +35,7 @@
         type="default"
       >关闭</el-button>
     </p>
-  </aw-container>
+  </d2-container>
 </template>
 
 <script>
@@ -48,7 +48,7 @@
           }
         },
         computed: {
-        ...mapState('awadmin/page', [
+        ...mapState('d2admin/page', [
           'opened',
           'current' //用户获取当前页面的地址，用于关闭
         ])
@@ -57,7 +57,7 @@
           this.$message({message:this.$route.query.id})
         },
         methods:{
-          ...mapActions('awadmin/page', [
+          ...mapActions('d2admin/page', [
             'close',
           ]),
           _generalData(obj){
@@ -76,11 +76,11 @@
 </script>
 
 <style lang="scss">
-  .aw-table-view{
-    .aw-item-status{
+  .zis-table-view{
+    .zis-item-status{
       color:red;
     }
-    .aw-item-title td{
+    .zis-item-title td{
       text-align: center;
     }
     table th{

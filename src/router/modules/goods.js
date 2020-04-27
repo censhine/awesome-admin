@@ -56,6 +56,24 @@ export default {
         ...meta,
         title: '规格管理'
       }
+    },
+    {
+      path: 'comments',
+      name: `${pre}comments`,
+      component: _import('aw/goods/comments'),
+      meta: {
+        ...meta,
+        title: '评论管理'
+      }
+    },
+    {
+      path: 'comments/detail',
+      name: `${pre}comments-detail`,
+      component: _import('aw/goods/comments/detail'),
+      meta: {
+        ...meta,
+        title: '查看评论'
+      }
     }
   ])('aw-goods-')
 }

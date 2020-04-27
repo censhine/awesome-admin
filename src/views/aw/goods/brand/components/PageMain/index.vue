@@ -1,10 +1,11 @@
 <template>
-  <div class="aw-p">
+  <div class="cs-p">
     <el-form
       :inline="true"
       size="small">
       <el-form-item>
         <el-button
+          type="primary"
           icon="el-icon-plus"
           :disabled="loading"
           @click="handleCreate">新增品牌</el-button>
@@ -73,7 +74,7 @@
 
       <el-table-column
         label="关联分类"
-        prop="brand_cate"
+        prop="related_category"
         min-width="160"></el-table-column>
 
 <!--      <el-table-column-->
@@ -323,14 +324,14 @@
           size="small">修改</el-button>
       </div>
 
-      <aw-storage
+      <cs-storage
         ref="storage"
         style="display: none"
         :limit="1"
         @confirm="_getStorageFileList">
-      </aw-storage>
+      </cs-storage>
 
-      <aw-upload
+      <cs-upload
         style="display: none"
         ref="upload"
         type="slot"
@@ -338,7 +339,7 @@
         :limit="1"
         :multiple="false"
         @confirm="_getUploadFileList">
-      </aw-upload>
+      </cs-upload>
     </el-dialog>
   </div>
 </template>
@@ -356,8 +357,8 @@ import { getGoodsCategoryItem } from '@/api/goods/category'
 
 export default {
   components: {
-    'csUpload': () => import('@/components/aw-upload'),
-    'csStorage': () => import('@/components/aw-storage')
+    'csUpload': () => import('@/components/cs-upload'),
+    'csStorage': () => import('@/components/cs-storage')
   },
   props: {
     loading: {

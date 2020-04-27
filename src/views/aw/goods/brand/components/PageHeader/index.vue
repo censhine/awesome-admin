@@ -51,7 +51,7 @@
     <el-form-item>
       <el-button
         icon="el-icon-refresh"
-        @click="handleFormReset">重置</el-button>
+        @click="handleFormReset">刷新</el-button>
     </el-form-item>
   </el-form>
 </template>

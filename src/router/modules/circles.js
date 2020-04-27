@@ -40,6 +40,15 @@ export default {
       }
     },
     {
+      path: 'store/detail',
+      name: `${pre}store-detail`,
+      component: _import('aw/circles/store/detail'),
+      meta: {
+        ...meta,
+        title: '店铺详情'
+      }
+    },
+    {
       path: 'goods',
       name: `${pre}goods`,
       component: _import('aw/circles/goods'),

@@ -1,5 +1,5 @@
 <template>
-  <aw-container :is-back-to-top="true">
+  <d2-container :is-back-to-top="true">
     <page-header
       slot="header"
       :loading="loading"
@@ -21,7 +21,7 @@
       :size="page.size"
       :total="page.total"
       @change="handlePaginationChange"/>
-  </aw-container>
+  </d2-container>
 </template>
 
 <script>
@@ -51,7 +51,7 @@ export default {
   mounted() {
     Promise.all([
       getStoreList(null),
-      this.$store.dispatch('awadmin/db/databasePage', { user: true })
+      this.$store.dispatch('d2admin/db/databasePage', { user: true })
     ])
       .then(res => {
         this.cat = []

@@ -6,20 +6,12 @@ const _import = require('@/libs/util.import.' + process.env.NODE_ENV)
 const meta = { auth: true }
 
 export default {
-  path: '/aw/contract',
-  name: 'aw-contract',
+  path: '/aw/order-list',
+  name: 'aw-order-list',
   meta,
-  redirect: { name: 'aw-contract-index' },
   component: layoutHeaderAside,
   children: (pre => [
-    {
-      path: 'index',
-      name: `${pre}index`,
-      component: _import('aw/contract/index'),
-      meta: {
-        ...meta,
-        title: '签约合同'
-      }
-    }
-  ])('aw-contract-')
+  	{ path: 'index', name: `${pre}index`, component: _import('aw/order-list/index'), meta: { ...meta, title: '商品订单列表' }},
+  	{ path: 'detail', name: `${pre}detail`, component: _import('aw/order-list/detail'), meta: { ...meta, title: '订单详情' }},
+  ])('aw-order-list-')
 }

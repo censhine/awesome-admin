@@ -10,15 +10,15 @@
           <img v-if="asideCollapse" :src="`${$baseUrl}image/theme/${themeActiveSetting.name}/logo/icon-only.png`">
           <img v-else :src="`${$baseUrl}image/theme/${themeActiveSetting.name}/logo/all.png`">
         </router-link>
-        <div class="toggle-aside-btn" @click="handleToggleAside" flex-box="0">
+        <!--div class="toggle-aside-btn" @click="handleToggleAside" flex-box="0">
           <aw-icon name="bars"/>
-        </div>
+        </div-->
         <aw-menu-header flex-box="1"/>
         <!-- 顶栏右侧 -->
         <div class="aw-header-right" flex-box="0">
           <!-- 如果你只想在开发环境显示这个按钮请添加 v-if="$env === 'development'" -->
           <aw-header-search @click="handleSearchClick"/>
-          <aw-header-log/>
+          <!--aw-header-log/-->
           <aw-header-fullscreen/>
           <aw-header-theme/>
           <aw-header-size/>
@@ -31,7 +31,8 @@
       <div class="aw-theme-container" flex-box="1" flex>
         <!-- 主体 侧边栏 -->
         <div flex-box="0" ref="aside" class="aw-theme-container-aside" :style="{ width: asideCollapse ? asideWidthCollapse : asideWidth, opacity: this.searchActive ? 0.5 : 1 }">
-          <aw-menu-side/>
+          <!--aw-menu-side/-->
+          <aw-left-menu-side></aw-left-menu-side>
         </div>
         <!-- 主体 -->
         <div class="aw-theme-container-main" flex-box="1" flex>
@@ -45,9 +46,9 @@
           <transition name="fade-scale">
             <div v-if="!searchActive" class="aw-theme-container-main-layer" flex="dir:top">
               <!-- tab -->
-              <div class="aw-theme-container-main-header" flex-box="0">
+              <!--div class="aw-theme-container-main-header" flex-box="0">
                 <aw-tabs/>
-              </div>
+              </div-->
               <!-- 页面 -->
               <div class="aw-theme-container-main-body" flex-box="1">
                 <transition :name="transitionActive ? 'fade-transverse' : ''">
@@ -65,7 +66,8 @@
 </template>
 
 <script>
-import awMenuSide from './components/menu-side'
+import awLeftMenuSide from './components/left-menu'
+//import awMenuSide from './components/menu-side'
 import awMenuHeader from './components/menu-header'
 import awTabs from './components/tabs'
 import awHeaderFullscreen from './components/header-fullscreen'
@@ -74,7 +76,7 @@ import awHeaderSearch from './components/header-search'
 import awHeaderSize from './components/header-size'
 import awHeaderTheme from './components/header-theme'
 import awHeaderUser from './components/header-user'
-import awHeaderLog from './components/header-log'
+//import awHeaderLog from './components/header-log'
 import awHeaderColor from './components/header-color'
 import { mapState, mapGetters, mapActions } from 'vuex'
 import mixinSearch from './mixins/search'
@@ -84,16 +86,17 @@ export default {
     mixinSearch
   ],
   components: {
-    awMenuSide,
+    awLeftMenuSide,
+    //awMenuSide,
     awMenuHeader,
-    awTabs,
+    //awTabs,
     awHeaderFullscreen,
     awHeaderLocales,
     awHeaderSearch,
     awHeaderSize,
     awHeaderTheme,
     awHeaderUser,
-    awHeaderLog,
+    //awHeaderLog,
     awHeaderColor
   },
   data () {
@@ -140,4 +143,7 @@ export default {
 <style lang="scss">
 // 注册主题
 @import '~@/assets/style/theme/register.scss';
+.d2-layout-header-aside-group {
+  height: 1200px !important;
+}
 </style>

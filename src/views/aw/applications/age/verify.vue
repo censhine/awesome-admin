@@ -48,7 +48,6 @@
 
 <script>
     export default {
-        name: "verify",
         props:{
           formData: {
             type: Object,
@@ -96,7 +95,9 @@
           if (!parentToChildData) {
             return
           }
-            this.$refs.addForm.clearVaild
+          if(this.$refs.verifyForm){
+            this.$refs.verifyForm.clearValidate()
+          }
           this.veryDialogFormVisible = isVisible
         }
       }
