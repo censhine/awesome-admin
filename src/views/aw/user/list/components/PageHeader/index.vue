@@ -5,7 +5,7 @@
     ref="form"
     size="mini"
     style="margin-bottom: -18px;">
-
+    <aw-header title="用户管理"></aw-header>
     <el-row>
       <el-button type="primary">全部(1000)</el-button>
       <el-button>普通用户(100)</el-button>
@@ -16,6 +16,7 @@
     <el-divider></el-divider>
 
     <el-form-item>
+
       <el-button
         type="primary"
         icon="el-icon-plus"

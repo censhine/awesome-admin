@@ -1,9 +1,9 @@
 <template>
-  <d2-container>
+  <aw-container>
     <p style="text-align: right; margin-bottom: 10px;">
-      <d2-back title="返回" align="right"></d2-back>
+      <aw-back title="返回" align="right"></aw-back>
     </p>
-    <div class="zis-table-view">
+    <div class="aw-table-view">
         <el-row>
           <el-col :span="4" style="text-align: center; background:#F9FAFC;border:1px solid #ededed;height: 221px; box-sizing: border-box">
             <div style="margin-top: 10px">
@@ -32,7 +32,7 @@
           </el-col>
         </el-row>
     </div>
-    <div class="zis-table-list">
+    <div class="aw-table-list">
       <el-table border :data="[]" class="static-table">
         <el-table-column label="统计信息"></el-table-column>
       </el-table>
@@ -56,7 +56,7 @@
       </el-table>
     </div>
 
-    <div class="zis-table-list">
+    <div class="aw-table-list">
       <el-table border :data="[]" class="static-table">
         <el-table-column label="收货地址"></el-table-column>
       </el-table>
@@ -73,7 +73,7 @@
       </el-table>
     </div>
 
-    <div class="zis-table-list">
+    <div class="aw-table-list">
       <el-table border :data="[]" class="static-table">
         <el-table-column label="订单记录"></el-table-column>
       </el-table>
@@ -87,20 +87,20 @@
         <el-table-column label="订单状态" prop="order_status" align="center"></el-table-column>
         <el-table-column label="操作" align="center">
           <template slot-scope="scope">
-            <el-button size="mini" type="text" @click="$router.push({path:'/zis/user/list/view',query:{...scope.row}})">查看</el-button>
+            <el-button size="mini" type="text" @click="$router.push({path:'/aw/user/list/view',query:{...scope.row}})">查看</el-button>
           </template>
         </el-table-column>
       </el-table>
     </div>
 
-  </d2-container>
+  </aw-container>
 </template>
 
 <script>
-    import zTable from '@/components/zis-table'
+    import zTable from '@/components/aw-table'
     import {mapState,mapActions} from 'vuex'
     export default {
-        name: "zis-user-list-view",
+        name: "aw-user-list-view",
         data(){
           return {
             tableData: this._generalData(this.$route.query),
@@ -124,7 +124,7 @@
           }
         },
         computed: {
-        ...mapState('d2admin/page', [
+        ...mapState('awadmin/page', [
           'opened',
           'current' //用户获取当前页面的地址，用于关闭
         ])
@@ -133,7 +133,7 @@
           this.$message({message:this.$route.query.id})
         },
         methods:{
-          ...mapActions('d2admin/page', [
+          ...mapActions('awadmin/page', [
             'close',
           ]),
           _generalData(obj){
@@ -153,11 +153,11 @@
 </script>
 
 <style lang="scss">
-  .zis-table-view{
-    .zis-item-status{
+  .aw-table-view{
+    .aw-item-status{
       color:red;
     }
-    .zis-item-title td{
+    .aw-item-title td{
       text-align: center;
     }
     table th{
@@ -167,6 +167,6 @@
       background: #F9FAFC;
     }
   }
-  .zis-table-list{margin-top: 20px;}
+  .aw-table-list{margin-top: 20px;}
   .static-table .el-table__empty-block{display: none}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="cs-p">
+  <div class="aw-p">
     <el-form
       :inline="true"
       size="small">
@@ -324,14 +324,14 @@
           size="small">修改</el-button>
       </div>
 
-      <cs-storage
+      <aw-storage
         ref="storage"
         style="display: none"
         :limit="1"
         @confirm="_getStorageFileList">
-      </cs-storage>
+      </aw-storage>
 
-      <cs-upload
+      <aw-upload
         style="display: none"
         ref="upload"
         type="slot"
@@ -339,7 +339,7 @@
         :limit="1"
         :multiple="false"
         @confirm="_getUploadFileList">
-      </cs-upload>
+      </aw-upload>
     </el-dialog>
   </div>
 </template>
@@ -357,8 +357,8 @@ import { getGoodsCategoryItem } from '@/api/goods/category'
 
 export default {
   components: {
-    'csUpload': () => import('@/components/cs-upload'),
-    'csStorage': () => import('@/components/cs-storage')
+    'csUpload': () => import('@/components/aw-upload'),
+    'csStorage': () => import('@/components/aw-storage')
   },
   props: {
     loading: {
@@ -503,13 +503,13 @@ export default {
   methods: {
     // 验证权限
     _validationAuth() {
-      this.auth.add = this.$permission('/zis/goods/brand/add')
-      this.auth.set = this.$permission('/zis/goods/brand/set')
-      this.auth.del = this.$permission('/zis/goods/brand/del')
-      this.auth.sort = this.$permission('/zis/goods/brand/sort')
-      this.auth.url = this.$permission('/zis/goods/brand/url')
-      this.auth.enable = this.$permission('/zis/goods/brand/enable')
-      this.auth.disable = this.$permission('/zis/goods/brand/disable')
+      this.auth.add = this.$permission('/aw/goods/brand/add')
+      this.auth.set = this.$permission('/aw/goods/brand/set')
+      this.auth.del = this.$permission('/aw/goods/brand/del')
+      this.auth.sort = this.$permission('/aw/goods/brand/sort')
+      this.auth.url = this.$permission('/aw/goods/brand/url')
+      this.auth.enable = this.$permission('/aw/goods/brand/enable')
+      this.auth.disable = this.$permission('/aw/goods/brand/disable')
     },
     // 获取列表中的编号
     _getIdList(val) {

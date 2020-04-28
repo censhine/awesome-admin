@@ -6,6 +6,7 @@
     size="mini"
     @submit.native.prevent
     style="margin-bottom: -18px;">
+    <aw-header title="规格管理"></aw-header>
     <el-form-item label="所属模型" prop="goods_type_id">
       <el-select
         v-show="typeData.length"

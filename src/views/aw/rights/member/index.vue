@@ -1,5 +1,6 @@
 <template>
-  <d2-container>
+  <aw-container>
+    <aw-header title="成员管理"></aw-header>
     <el-form
       :inline="true"
       :model="form"
@@ -17,7 +18,7 @@
         <el-button
           type="primary"
           @click="handleFormSubmit">
-          <d2-icon name="search"/>
+          <aw-icon name="search"/>
           查询
         </el-button>
       </el-form-item>
@@ -26,7 +27,7 @@
         <el-button
           type="default"
           @click="handleFormReset">
-          <d2-icon name="refresh"/>
+          <aw-icon name="refresh"/>
           刷新
         </el-button>
       </el-form-item>
@@ -114,7 +115,7 @@
     </div>
 
     <add-dialog :form-data="{}" ref="verifyDialog"></add-dialog>
-  </d2-container>
+  </aw-container>
 </template>
 
 <script>
@@ -156,7 +157,7 @@
     },
     methods: {
       handleSetting(row) {
-        this.$router.push({path:'/zis/rights/setting', query:row})
+        this.$router.push({path:'/aw/rights/setting', query:row})
       },
       handleEdit(index) {
         this.currentIndex = index

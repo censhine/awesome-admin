@@ -1,5 +1,5 @@
 <template>
-  <div class="cs-p">
+  <div class="aw-p">
     <el-form
       :inline="true"
       size="small">
@@ -342,12 +342,12 @@ export default {
   methods: {
     // 验证权限
     _validationAuth() {
-      this.auth.add = this.$permission('/zis/goods/spec/add')
-      this.auth.set = this.$permission('/zis/goods/spec/set')
-      this.auth.del = this.$permission('/zis/goods/spec/del')
-      this.auth.sort = this.$permission('/zis/goods/spec/sort')
-      this.auth.index = this.$permission('/zis/goods/spec/index')
-      this.auth.close = this.$permission('/zis/goods/spec/close')
+      this.auth.add = this.$permission('/aw/goods/spec/add')
+      this.auth.set = this.$permission('/aw/goods/spec/set')
+      this.auth.del = this.$permission('/aw/goods/spec/del')
+      this.auth.sort = this.$permission('/aw/goods/spec/sort')
+      this.auth.index = this.$permission('/aw/goods/spec/index')
+      this.auth.close = this.$permission('/aw/goods/spec/close')
     },
     // 获取列表中的编号
     _getIdList(val) {

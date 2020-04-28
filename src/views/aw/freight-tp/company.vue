@@ -1,5 +1,6 @@
 <template>
-  <d2-container>
+  <aw-container>
+    <aw-header title="物流公司"></aw-header>
    <div class="btn-group">
    	 <el-button
           type="primary"
@@ -13,7 +14,7 @@
           type="default"
           size='mini'
           @click="handleFormReset">
-          <d2-icon name="refresh"/>
+          <aw-icon name="refresh"/>
           	刷新
         </el-button>
    </div>
@@ -153,7 +154,7 @@
 
     </el-dialog>
 
-  </d2-container>
+  </aw-container>
 </template>
 
 <script>

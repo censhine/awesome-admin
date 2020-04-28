@@ -1,5 +1,5 @@
 <template>
-    <d2-container>
+    <aw-container>
       <table ref="goods" cellspacing="0">
         <tr>
           <td colspan="6"><el-checkbox></el-checkbox>商品管理</td>
@@ -100,9 +100,9 @@
 
       <p style="text-align: center; width: 100%; display: block;">
         <el-button type="success" size="mini">保存</el-button>
-        <d2-back title="返回" align="center" style="margin-left: 160px; margin-top: -30px;"></d2-back>
+        <aw-back title="返回" align="center" style="margin-left: 160px; margin-top: -30px;"></aw-back>
       </p>
-    </d2-container>
+    </aw-container>
 </template>
 
 <script>

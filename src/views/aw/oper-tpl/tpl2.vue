@@ -1,5 +1,6 @@
 <template>
-  <d2-container>
+  <aw-container>
+    <aw-header :title="`${d.Name}模板`"></aw-header>
     <div class="main">
       <el-form class="layui-form" v-model="form" ref="form">
         <div>
@@ -58,7 +59,7 @@
         </div>
       </el-form>
     </div>
-  </d2-container>
+  </aw-container>
 </template>
 
 <script>

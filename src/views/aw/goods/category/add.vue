@@ -1,5 +1,5 @@
 <template>
-  <d2-container>
+  <aw-container>
     <el-form ref="ruleForm" :rules="rules" :model="ruleForm" label-width="120px" size="mini">
       <el-form-item :label="label" size="mini">
         <el-input v-model="ruleForm.category_name"></el-input>
@@ -9,7 +9,7 @@
         <el-button @click="onBack">取消</el-button>
       </el-form-item>
     </el-form>
-  </d2-container>
+  </aw-container>
 </template>
 
 <script>

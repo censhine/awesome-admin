@@ -5,6 +5,7 @@
     ref="form"
     size="mini"
     style="margin-bottom: -18px;">
+    <aw-header title="本地推荐管理"></aw-header>
     <el-form-item>
       <el-select
         v-model="form.branch"

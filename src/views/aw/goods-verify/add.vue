@@ -1,7 +1,7 @@
 <template>
-	<d2-container>
+	<aw-container>
+    <aw-back title="返回" align="right"></aw-back>
 		<div class="wrap">
-      <d2-back title="返回" align="right"></d2-back>
 			<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-position='right' label-width="160px" class="demo-ruleForm" size="mini">
 				<el-form-item label="分类：" prop="category_id">
 					<el-cascader v-model="ruleForm.category_id" :options="ruleForm.options" @change="handleChange"></el-cascader>
@@ -78,7 +78,7 @@
 					<sku-table :data="ruleForm.attrs" v-model='ruleForm.data' :flatten="flatten" @on-change-data="handleChangeData" />
 				</el-form-item>
 				<el-form-item label='商品详情：'>
-					<d2-quill style="min-height: 200px; margin-bottom: 20px;" v-model="ruleForm.text" @text-change="textChangeHandler" @selection-change="selectionChangeHandler" @editor-change="editorChangeHandler" />
+					<aw-quill style="min-height: 200px; margin-bottom: 20px;" v-model="ruleForm.text" @text-change="textChangeHandler" @selection-change="selectionChangeHandler" @editor-change="editorChangeHandler" />
 				</el-form-item>
 				<el-form-item label="商品推荐：">
 					<el-radio-group v-model="ruleForm.recommend">
@@ -104,7 +104,7 @@
 			</el-form>
 		</div>
 
-	</d2-container>
+	</aw-container>
 </template>
 
 <script>
@@ -154,7 +154,7 @@
 		components: {
 			'vue-sku': Sku,
 			'sku-table': SkuTable,
-      d2Back: ()=>import("@/components/d2-back")
+      d2Back: ()=>import("@/components/aw-back")
 		},
 		data() {
 			return {

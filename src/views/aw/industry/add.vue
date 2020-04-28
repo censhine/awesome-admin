@@ -1,5 +1,5 @@
 <template>
-  <d2-container>
+  <aw-container>
     <el-form v-model="form" :rules="rules" ref="form" label-position='right' label-width="130px">
 
       <el-form-item label="行业名称" prop="industry_name">
@@ -37,17 +37,14 @@
 
       <el-form-item>
         <p style="text-align: left"><el-button type="success" size="mini" @click="handleCreate">确定</el-button></p>
-        <d2-back title="取消" icon-class="icon-back-hidden" align="left" style="margin-top: -35px; margin-left: 70px;"></d2-back>
+        <aw-back title="取消" icon-class="icon-back-hidden" align="left" style="margin-top: -50px; margin-left: 70px;"></aw-back>
       </el-form-item>
     </el-form>
-  </d2-container>
+  </aw-container>
 </template>
 
 <script>
   export default {
-    components:{
-      d2Back: ()=>import('@/components/d2-back')
-    },
     data() {
       return {
         style:'display: none',

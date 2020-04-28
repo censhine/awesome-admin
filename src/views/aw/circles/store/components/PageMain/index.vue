@@ -1,5 +1,5 @@
 <template>
-  <div class="cs-p">
+  <div class="aw-p">
     <el-table
       border
       v-loading="loading"
@@ -86,7 +86,7 @@
         min-width="140">
         <template slot-scope="scope">
           <el-button
-            @click="$router.push({path:'/zis/circles/store/detail',query:{...scope.row}})"
+            @click="$router.push({path:'/aw/circles/store/detail',query:{...scope.row}})"
             size="mini"
             type="text">查看</el-button>
 <!--          <el-button-->
@@ -216,14 +216,14 @@
           size="small">修改</el-button>
       </div>
 
-      <cs-storage
+      <aw-storage
         ref="storage"
         style="display: none"
         :limit="1"
         @confirm="_getStorageFileList">
-      </cs-storage>
+      </aw-storage>
 
-      <cs-upload
+      <aw-upload
         style="display: none"
         ref="upload"
         type="slot"
@@ -231,7 +231,7 @@
         :limit="1"
         :multiple="false"
         @confirm="_getUploadFileList">
-      </cs-upload>
+      </aw-upload>
     </el-dialog>
   </div>
 </template>
@@ -240,9 +240,9 @@
 import util from '@/utils/util'
 export default {
   components: {
-    'select2':()=>import('@/components/zis-select2'),
-    'csUpload': () => import('@/components/cs-upload'),
-    'csStorage': () => import('@/components/cs-storage'),
+    'select2':()=>import('@/components/aw-select2'),
+    'csUpload': () => import('@/components/aw-upload'),
+    'csStorage': () => import('@/components/aw-storage'),
   },
   props: {
     loading: {
@@ -386,13 +386,13 @@ export default {
   methods: {
     // 验证权限
     _validationAuth() {
-      this.auth.add = this.$permission('/zis/circles/store/add')
-      this.auth.set = this.$permission('/zis/circles/store/set')
-      this.auth.del = this.$permission('/zis/circles/store/del')
-      this.auth.sort = this.$permission('/zis/circles/store/sort')
-      this.auth.url = this.$permission('/zis/circles/store/url')
-      this.auth.enable = this.$permission('/zis/circles/store/enable')
-      this.auth.disable = this.$permission('/zis/circles/store/disable')
+      this.auth.add = this.$permission('/aw/circles/store/add')
+      this.auth.set = this.$permission('/aw/circles/store/set')
+      this.auth.del = this.$permission('/aw/circles/store/del')
+      this.auth.sort = this.$permission('/aw/circles/store/sort')
+      this.auth.url = this.$permission('/aw/circles/store/url')
+      this.auth.enable = this.$permission('/aw/circles/store/enable')
+      this.auth.disable = this.$permission('/aw/circles/store/disable')
     },
     // 获取列表中的编号
     _getIdList(val) {

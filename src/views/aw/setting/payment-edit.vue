@@ -1,5 +1,6 @@
 <template>
-  <d2-container>
+  <aw-container>
+    <aw-header title="支付编辑"></aw-header>
     <el-form v-model="form" :rules="rules" ref="form" label-position='right' label-width="200px">
 
       <el-form-item label="支付方式名称" prop="payment_name">
@@ -41,10 +42,10 @@
 
       <el-form-item>
         <p style="text-align: left"><el-button type="success" size="mini" @click="handleCreate">确定</el-button></p>
-        <d2-back title="取消" icon-class="icon-back-hidden" align="left" style="margin-top: -50px; margin-left: 70px;"></d2-back>
+        <aw-back title="取消" icon-class="icon-back-hidden" align="left" style="margin-top: -50px; margin-left: 70px;"></aw-back>
       </el-form-item>
     </el-form>
-  </d2-container>
+  </aw-container>
 </template>
 
 <script>

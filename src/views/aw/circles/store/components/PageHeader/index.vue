@@ -5,7 +5,7 @@
     ref="form"
     size="mini"
     style="margin-bottom: -18px;">
-
+    <aw-header title="官方店铺管理"></aw-header>
     <el-form-item label="" prop="store_owner">
       <el-input
         prefix-icon="el-icon-search"

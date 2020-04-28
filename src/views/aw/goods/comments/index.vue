@@ -1,5 +1,6 @@
 <template>
-  <d2-container>
+  <aw-container>
+    <aw-header title="评论管理"></aw-header>
     <el-form
       :inline="true"
       :model="form"
@@ -7,6 +8,7 @@
       size="mini"
       style="margin:20px 0 0px;padding: 10px 10px 0;background: #fff"
     >
+
       <el-form-item label="输入搜索：" prop="user">
         <el-input
           v-model="form.user"
@@ -17,7 +19,7 @@
         <el-button
           type="primary"
           @click="handleFormSubmit">
-          <d2-icon name="search"/>
+          <aw-icon name="search"/>
           查询
         </el-button>
       </el-form-item>
@@ -26,7 +28,7 @@
         <el-button
           type="default"
           @click="handleFormReset">
-          <d2-icon name="refresh"/>
+          <aw-icon name="refresh"/>
           刷新
         </el-button>
       </el-form-item>
@@ -138,7 +140,7 @@
       </el-pagination>
     </div>
 
-  </d2-container>
+  </aw-container>
 </template>
 
 <script>
@@ -196,7 +198,7 @@
     mounted() {
       Promise.all([
         //getCircleList(null),
-        this.$store.dispatch('d2admin/db/databasePage', { user: true })
+        this.$store.dispatch('awadmin/db/databasePage', { user: true })
       ])
         .then(res => {
           this.cat = []
@@ -216,7 +218,7 @@
       },
       goDetail(row){
         this.$router.push({
-          path:'/zis/goods/comments/detail',
+          path:'/aw/goods/comments/detail',
           query: row
         })
       },

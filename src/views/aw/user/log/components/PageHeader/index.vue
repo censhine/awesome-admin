@@ -5,7 +5,7 @@
     ref="form"
     size="mini"
     style="margin-bottom: -18px;">
-
+    <aw-header title="登录日志"></aw-header>
     <el-form-item>
       <el-button
         icon="el-icon-refresh"

@@ -1,5 +1,6 @@
 <template>
-	<d2-container>
+	<aw-container>
+    <aw-header title="平台设置"></aw-header>
 		<div class="settings-wrap">
 			<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-position='right' label-width="220px" class="demo-ruleForm" >
 	   	  <h2>
@@ -99,7 +100,7 @@
 	   </el-form>
 		</div>
 
-	</d2-container>
+	</aw-container>
 </template>
 
 <script>

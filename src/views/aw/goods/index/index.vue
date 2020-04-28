@@ -1,5 +1,5 @@
 <template>
-  <d2-container>
+  <aw-container>
   <el-table
     :data="tableData"
     border
@@ -33,8 +33,8 @@
     </el-table-column>
 
   </el-table>
-<!--  <d2-module-index-menu :menu="menu"/>-->
-  </d2-container>
+<!--  <aw-module-index-menu :menu="menu"/>-->
+  </aw-container>
 </template>
 
 <style>
@@ -53,7 +53,7 @@
 </style>
 
 <script>
-  import menu from '@/menu/modules/zis-goods'
+  import menu from '@/menu/modules/aw-goods'
   export default {
     data() {
       return {

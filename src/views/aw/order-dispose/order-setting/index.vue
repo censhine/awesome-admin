@@ -1,5 +1,6 @@
 <template>
-	<d2-container>
+	<aw-container>
+    <aw-header title="订单设置"></aw-header>
 		<div class="wrap">
 			<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-position='right' label-width="160px" class="demo-ruleForm" >
 	   	   	 <el-form-item label='正常订单超过：' prop='noPay'>
@@ -47,8 +48,8 @@
 			</el-form-item>
 	   </el-form>
 		</div>
-	   
-	</d2-container>
+
+	</aw-container>
 </template>
 
 <script>
@@ -71,7 +72,7 @@
 						pattern:/^[1-9]\d*$/,
 						message:'只能输大于0的数字'
 					}],
-					
+
 					noGoods: [{
 						required: true,
 						message: '请输入发货超时时间',

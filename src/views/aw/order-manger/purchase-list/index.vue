@@ -1,5 +1,6 @@
 <template>
-  <d2-container>
+  <aw-container>
+    <aw-header title="商家进货列表"></aw-header>
     <div class="btn-group">
       <span class="btn-list"
             :class="{'active':index===zIndex}"
@@ -24,7 +25,7 @@
         <el-button
           type="primary"
           @click="handleFormSubmit">
-          <d2-icon name="search"/>
+          <aw-icon name="search"/>
           查询
         </el-button>
       </el-form-item>
@@ -32,7 +33,7 @@
         <el-button
           type="primary"
           @click="exportExcel">
-          <d2-icon name="download"/>
+          <aw-icon name="download"/>
           导出数据
         </el-button>
       </el-form-item>
@@ -40,7 +41,7 @@
         <el-button
           type="default"
           @click="handleFormReset">
-          <d2-icon name="refresh"/>
+          <aw-icon name="refresh"/>
           刷新
         </el-button>
       </el-form-item>
@@ -135,7 +136,7 @@
 	    </span>
     </el-dialog>
 
-  </d2-container>
+  </aw-container>
 </template>
 
 <script>
@@ -312,7 +313,7 @@
     	},
     	goLogistics(row){
     		this.$router.push({
-    			path:'/zis/order-manger/logistics'
+    			path:'/aw/order-manger/logistics'
     		})
     	},
       sendGoods(row) {

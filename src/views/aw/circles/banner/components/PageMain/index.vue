@@ -1,5 +1,5 @@
 <template>
-  <div class="cs-p">
+  <div class="aw-p">
     <el-table
       border
       v-loading="loading"
@@ -218,14 +218,14 @@
           size="small">修改</el-button>
       </div>
 
-      <cs-storage
+      <aw-storage
         ref="storage"
         style="display: none"
         :limit="1"
         @confirm="_getStorageFileList">
-      </cs-storage>
+      </aw-storage>
 
-      <cs-upload
+      <aw-upload
         style="display: none"
         ref="upload"
         type="slot"
@@ -233,7 +233,7 @@
         :limit="1"
         :multiple="false"
         @confirm="_getUploadFileList">
-      </cs-upload>
+      </aw-upload>
     </el-dialog>
   </div>
 </template>
@@ -253,9 +253,9 @@ import {delCircleList,getCircleList,setCircleList} from '@/api/mock.data'
 
 export default {
   components: {
-    'select2':()=>import('@/components/zis-select2'),
-    'csUpload': () => import('@/components/cs-upload'),
-    'csStorage': () => import('@/components/cs-storage'),
+    'select2':()=>import('@/components/aw-select2'),
+    'csUpload': () => import('@/components/aw-upload'),
+    'csStorage': () => import('@/components/aw-storage'),
     'add': ()=>import('../../add')
   },
   props: {
@@ -400,13 +400,13 @@ export default {
   methods: {
     // 验证权限
     _validationAuth() {
-      this.auth.add = this.$permission('/zis/circles/banner/add')
-      this.auth.set = this.$permission('/zis/circles/banner/set')
-      this.auth.del = this.$permission('/zis/circles/banner/del')
-      this.auth.sort = this.$permission('/zis/circles/banner/sort')
-      this.auth.url = this.$permission('/zis/circles/banner/url')
-      this.auth.enable = this.$permission('/zis/circles/banner/enable')
-      this.auth.disable = this.$permission('/zis/circles/banner/disable')
+      this.auth.add = this.$permission('/aw/circles/banner/add')
+      this.auth.set = this.$permission('/aw/circles/banner/set')
+      this.auth.del = this.$permission('/aw/circles/banner/del')
+      this.auth.sort = this.$permission('/aw/circles/banner/sort')
+      this.auth.url = this.$permission('/aw/circles/banner/url')
+      this.auth.enable = this.$permission('/aw/circles/banner/enable')
+      this.auth.disable = this.$permission('/aw/circles/banner/disable')
     },
     // 获取列表中的编号
     _getIdList(val) {

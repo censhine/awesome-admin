@@ -1,8 +1,9 @@
 <template>
-  <d2-container>
-    <d2-quill v-model="text" style="min-height: 200px; max-height: 300px;"/>
+  <aw-container>
+    <aw-header title="电子签名"></aw-header>
+    <aw-quill v-model="text" style="min-height: 200px; max-height: 300px;"/>
     <esign/>
-  </d2-container>
+  </aw-container>
 </template>
 
 <script>

@@ -1,7 +1,7 @@
 <template>
-	<d2-container>
+	<aw-container>
 		<div class="wrap">
-      <d2-back title="返回" align="right"></d2-back>
+      <aw-back title="返回" align="right"></aw-back>
 			<el-row>
 				<el-col :span='12'>
 					<h3>发起方</h3>
@@ -14,7 +14,7 @@
 				<el-col :span='11' class='box_item'>
 					<el-row>
 						<el-col :span='9'>
-							<img class="shop_logo" src="../../../../dist/image/theme/star/bg.jpg" alt="" />
+							<img class="shop_logo" src="'https://img30.360buyimg.com/babel/s100x100_jfs/t1/42403/23/6370/99357/5d0061e3Ec5d80f3a/bac5f5a37dccfa1e.png!cc_100x100.webp'," alt="" />
 						</el-col>
 						<el-col :span='15'>
 							<p>店铺：<span>{{send.shopName}}</span></p>
@@ -27,7 +27,7 @@
 				<el-col :span='11' class='box_item'>
 					<el-row>
 						<el-col :span='9'>
-							<img class="shop_logo" src="../../../../dist/image/theme/violet/preview@2x.png" alt="" />
+							<img class="shop_logo" src="https://img30.360buyimg.com/babel/s100x100_jfs/t1/42403/23/6370/99357/5d0061e3Ec5d80f3a/bac5f5a37dccfa1e.png!cc_100x100.webp" alt="" />
 						</el-col>
 						<el-col :span='15' class='sta'>
 							<p>店铺：<span>{{sign.shopName}}</span></p>
@@ -43,7 +43,7 @@
 				<h3>代理合同</h3>
 			</el-row>
 			<el-row class='img'>
-				<img class="imgs" src="../../../../public/image/contract.jpg" alt="" />
+				<img class="imgs" src="'https://img30.360buyimg.com/babel/s100x100_jfs/t1/42403/23/6370/99357/5d0061e3Ec5d80f3a/bac5f5a37dccfa1e.png!cc_100x100.webp'," alt="" />
 			</el-row>
 			<el-row class='title'>
 				<h3>公正律师</h3>
@@ -101,15 +101,12 @@
 	    </span>
     </el-dialog>
 
-	</d2-container>
+	</aw-container>
 </template>
 
 <script>
 	export default{
-	  components:{
-	    d2Back: ()=>import('@/components/d2-back')
-    },
-		data(){
+		data() {
 			return{
 				send:{
 					shopName:'张三旗舰店',
@@ -133,49 +130,49 @@
 				dialogShow:false,
 				legalList:[
 						{
-						  legalPhoto:require('../../../../dist/image/theme/violet/preview@2x.png'),
+						  legalPhoto:'https://img30.360buyimg.com/babel/s100x100_jfs/t1/42403/23/6370/99357/5d0061e3Ec5d80f3a/bac5f5a37dccfa1e.png!cc_100x100.webp',
 						  legalName:'李律师',
 						  legalLawFirm:'深圳富士康律师所深圳富士康律师所',
 						  orderNum:100
 						},
 						{
-						  legalPhoto:require('../../../../dist/image/theme/star/preview@2x.png'),
+						  legalPhoto:'https://img30.360buyimg.com/babel/s100x100_jfs/t1/42403/23/6370/99357/5d0061e3Ec5d80f3a/bac5f5a37dccfa1e.png!cc_100x100.webp',
 						  legalName:'张律师',
 						  legalLawFirm:'深圳富士康律师所深圳富士康律师所',
 						  orderNum:80
 						},
 						{
-						  legalPhoto:require('../../../../dist/image/theme/line/preview@2x.png'),
+						  legalPhoto:'https://img30.360buyimg.com/babel/s100x100_jfs/t1/42403/23/6370/99357/5d0061e3Ec5d80f3a/bac5f5a37dccfa1e.png!cc_100x100.webp',
 						  legalName:'陈律师',
 						  legalLawFirm:'深圳富士康律师康律师所',
 						  orderNum:300
 						},
 						{
-						  legalPhoto:require('../../../../dist/image/theme/d2/preview@2x.png'),
+						  legalPhoto:'https://img30.360buyimg.com/babel/s100x100_jfs/t1/42403/23/6370/99357/5d0061e3Ec5d80f3a/bac5f5a37dccfa1e.png!cc_100x100.webp',
 						  legalName:'邱律师',
 						  legalLawFirm:'深圳富士康律师所深律师所',
 						  orderNum:50
 						},
 						{
-						  legalPhoto:require('../../../../dist/image/theme/violet/preview@2x.png'),
+						  legalPhoto:'https://img30.360buyimg.com/babel/s100x100_jfs/t1/42403/23/6370/99357/5d0061e3Ec5d80f3a/bac5f5a37dccfa1e.png!cc_100x100.webp',
 						  legalName:'李律师',
 						  legalLawFirm:'深圳富士康律师所深圳富士康律师所',
 						  orderNum:60
 						},
 						{
-						  legalPhoto:require('../../../../dist/image/theme/star/preview@2x.png'),
+						  legalPhoto:'https://img30.360buyimg.com/babel/s100x100_jfs/t1/42403/23/6370/99357/5d0061e3Ec5d80f3a/bac5f5a37dccfa1e.png!cc_100x100.webp',
 						  legalName:'张律师',
 						  legalLawFirm:'深圳富士康律师所深圳富士康律师所',
 						  orderNum:220
 						},
 						{
-						  legalPhoto:require('../../../../dist/image/theme/line/preview@2x.png'),
+						  legalPhoto:'https://img30.360buyimg.com/babel/s100x100_jfs/t1/42403/23/6370/99357/5d0061e3Ec5d80f3a/bac5f5a37dccfa1e.png!cc_100x100.webp',
 						  legalName:'陈律师',
 						  legalLawFirm:'深圳富士康律师康律师所',
 						  orderNum:280
 						},
 						{
-						  legalPhoto:require('../../../../dist/image/theme/d2/preview@2x.png'),
+						  legalPhoto:'https://img30.360buyimg.com/babel/s100x100_jfs/t1/42403/23/6370/99357/5d0061e3Ec5d80f3a/bac5f5a37dccfa1e.png!cc_100x100.webp',
 						  legalName:'邱律师',
 						  legalLawFirm:'深圳富士康律师所深律师所',
 						  orderNum:10

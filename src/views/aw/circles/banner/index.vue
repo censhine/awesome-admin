@@ -1,5 +1,5 @@
 <template>
-  <d2-container :is-back-to-top="true">
+  <aw-container :is-back-to-top="true">
     <page-header
       slot="header"
       :loading="loading"
@@ -21,13 +21,13 @@
       :size="page.size"
       :total="page.total"
       @change="handlePaginationChange"/>
-  </d2-container>
+  </aw-container>
 </template>
 
 <script>
 import {getCircleList,getCircleItem,setCircleItem} from '@/api/mock.data'
 export default {
-  name: 'zis-circles-banner',
+  name: 'aw-circles-banner',
   components: {
     'PageHeader': () => import('./components/PageHeader'),
     'PageMain': () => import('./components/PageMain'),
@@ -52,7 +52,7 @@ export default {
   mounted() {
     Promise.all([
       getCircleList(null),
-      this.$store.dispatch('d2admin/db/databasePage', { user: true })
+      this.$store.dispatch('awadmin/db/databasePage', { user: true })
     ])
       .then(res => {
         this.cat = []

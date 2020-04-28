@@ -1,7 +1,7 @@
 <template>
-	<d2-container>
+	<aw-container>
 		<div class="wrap clearfix">
-      <d2-back title="返回" align="right"></d2-back>
+      <aw-back title="返回" align="right"></aw-back>
 			<div class="left_box left">
 				 <page-media
 		             ref="goodsMedia"
@@ -9,11 +9,11 @@
 		        </page-media>
 			</div>
 			<div class="rf_box">
-				<div class="goods-name cs-pb-5">
+				<div class="goods-name aw-pb-5">
 					<b>俞兆林 冰丝短袖网眼T恤男夏季超薄款运动速干透气网纱镂空大码半袖体恤 V领黑色 4XL</b>
 				</div>
 				<div class="summary-first">
-					<div class="summary-price-wrap cs-pt-10">
+					<div class="summary-price-wrap aw-pt-10">
 						<div class="summary-price">
 							<div class="dt">市场价</div>
 							<div class="dd">
@@ -68,7 +68,7 @@
 		</div>
 		<el-tabs v-model="activeName" style="clear: both">
 			<el-tab-pane label="详情描述" name="content">
-				<div class="parameter cs-mb-15">
+				<div class="parameter aw-mb-15">
 					<ul class="parameter-list">
 						<li>
 							<span>品牌： 俞兆林（YUZHAOLIN）
@@ -86,7 +86,7 @@
 			</el-tab-pane>
 		</el-tabs>
 
-	</d2-container>
+	</aw-container>
 
 </template>
 

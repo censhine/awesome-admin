@@ -1,5 +1,5 @@
 <template>
-  <d2-container :is-back-to-top="true">
+  <aw-container :is-back-to-top="true">
     <page-header
       slot="header"
       :loading="loading"
@@ -22,7 +22,7 @@
       :size="page.size"
       :total="page.total"
       @change="handlePaginationChange"/>
-  </d2-container>
+  </aw-container>
 </template>
 
 <script>
@@ -40,7 +40,13 @@ export default {
     return {
       loading: true,
       cat: [],
-      table: [],
+      table: [
+        {id:10001,user_name:"windr",nick_name:"张少华",phone:18523232323,area:"广东深圳",industry:"美食",create_time:"2020-04-28 10:10:10",status:"0"},
+        {id:10002,user_name:"windr",nick_name:"张少华",phone:18523232323,area:"广东广州",industry:"电子产品",create_time:"2020-04-28 10:10:10",status:"0"},
+        {id:10003,user_name:"windr",nick_name:"张少华",phone:18523232323,area:"广东深圳",industry:"美食",create_time:"2020-04-28 10:10:10",status:"1"},
+        {id:10004,user_name:"windr",nick_name:"张少华",phone:18523232323,area:"广东深圳",industry:"电子产品",create_time:"2020-04-28 10:10:10",status:"2"},
+        {id:10005,user_name:"windr",nick_name:"张少华",phone:18523232323,area:"广东深圳",industry:"美食",create_time:"2020-04-28 10:10:10",status:"0"},
+      ],
       page: {
         current: 1,
         size: 0,
@@ -55,10 +61,10 @@ export default {
   mounted() {
     Promise.all([
       getGoodsCategoryList(null),
-      this.$store.dispatch('d2admin/db/databasePage', { user: true })
+      this.$store.dispatch('awadmin/db/databasePage', { user: true })
     ])
       .then(res => {
-        this.cat = util.formatDataToTree(res[0].data, 'goods_category_id')
+        //this.cat = util.formatDataToTree(res[0].data, 'goods_category_id')
         this.page.size = res[1].get('size').value() || 25
       })
       .then(() => {
@@ -99,7 +105,7 @@ export default {
         console.log(res)
         this.loading = false;
         this.page.total = res.data.total;
-        this.table = res.data.items;
+        //this.table = res.data.items;
       })
     },
     // 排序刷新
@@ -124,7 +130,7 @@ export default {
         page_size: this.page.size
       })
         .then(res => {
-          this.table = res.data.items || []
+          //this.table = res.data.items || []
           this.page.total = res.data.total_result
         })
         .finally(() => {

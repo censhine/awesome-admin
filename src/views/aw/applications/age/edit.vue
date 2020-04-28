@@ -152,14 +152,14 @@
         size="small">修改</el-button>
     </div>
 
-    <cs-storage
+    <aw-storage
       ref="storage"
       style="display: none"
       :limit="1"
       @confirm="_getStorageFileList">
-    </cs-storage>
+    </aw-storage>
 
-    <cs-upload
+    <aw-upload
       style="display: none"
       ref="upload"
       type="slot"
@@ -167,15 +167,15 @@
       :limit="1"
       :multiple="false"
       @confirm="_getUploadFileList">
-    </cs-upload>
+    </aw-upload>
   </el-dialog>
 </template>
 
 <script>
     export default {
       components: {
-        'csUpload': () => import('@/components/cs-upload'),
-        'csStorage': () => import('@/components/cs-storage'),
+        'csUpload': () => import('@/components/aw-upload'),
+        'csStorage': () => import('@/components/aw-storage'),
        },
       data() {
           return {

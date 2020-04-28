@@ -1,11 +1,11 @@
 <template>
-  <d2-container :is-back-to-top="true">
+  <aw-container :is-back-to-top="true">
     <page-main
       :loading="loading"
       :tree-data="tree"
       @refresh="handleRefresh"
       ref="main"/>
-  </d2-container>
+  </aw-container>
 </template>
 
 <script>
@@ -14,7 +14,7 @@ import axios from 'axios'
 //import { getGoodsCategoryList } from '@/api/goods/category'
 import { getCateList } from '@/api/goods/category'
 export default {
-  name: 'zis-goods-category',
+  name: 'aw-goods-category',
   components: {
     'PageMain': () => import('./components/PageMain')
   },

@@ -1,5 +1,5 @@
 <template>
-  <d2-container>
+  <aw-container>
     <el-form v-model="form" :rules="rules" ref="form" label-position='right' label-width="130px">
       <el-form-item label="选择合同类型" prop="contract_type">
         <el-select v-model="form.contract_type">
@@ -30,21 +30,21 @@
       </el-form-item>
 
       <el-form-item label="文档预览区" prop="content">
-        <d2-quill v-model="form.content" style="min-height: 300px"></d2-quill>
+        <aw-quill v-model="form.content" style="min-height: 300px"></aw-quill>
       </el-form-item>
 
       <el-form-item>
         <p style="text-align: left"><el-button type="success" size="mini" @click="handleCreate">确定</el-button></p>
-        <d2-back title="取消" icon-class="icon-back-hidden" align="left" style="margin-top: -48px; margin-left: 70px;"></d2-back>
+        <aw-back title="取消" icon-class="icon-back-hidden" align="left" style="margin-top: -48px; margin-left: 70px;"></aw-back>
       </el-form-item>
     </el-form>
-    </d2-container>
+    </aw-container>
 </template>
 
 <script>
     export default {
         components:{
-          d2Back: ()=>import('@/components/d2-back')
+          d2Back: ()=>import('@/components/aw-back')
         },
         data() {
           return {

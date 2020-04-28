@@ -1,5 +1,5 @@
 <template>
-    <d2-container class="goods-comments">
+    <aw-container class="goods-comments">
       <div style="width: 800px">
         <el-row>
           <el-col :span="12">
@@ -51,14 +51,14 @@
             {{result.comments}}
           </el-row>
 
-          <d2-back title="返回" align="left" style="margin-top: 15px;"></d2-back>
+          <aw-back title="返回" align="left" style="margin-top: 15px;"></aw-back>
         </el-row>
       </div>
-    </d2-container>
+    </aw-container>
 </template>
 
 <script>
-import d2Back from '@/components/d2-back'
+import d2Back from '@/components/aw-back'
 export default {
     components:{
       d2Back

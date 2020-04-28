@@ -1,5 +1,6 @@
 <template>
-  <d2-container>
+  <aw-container>
+    <aw-header title="行业管理"></aw-header>
     <el-form
       :inline="true"
       :model="form"
@@ -23,7 +24,7 @@
         <el-button
           type="primary"
           @click="handleFormSubmit">
-          <d2-icon name="search"/>
+          <aw-icon name="search"/>
           查询
         </el-button>
       </el-form-item>
@@ -32,7 +33,7 @@
         <el-button
           type="default"
           @click="handleFormReset">
-          <d2-icon name="refresh"/>
+          <aw-icon name="refresh"/>
           刷新
         </el-button>
       </el-form-item>
@@ -40,7 +41,7 @@
       <el-form-item>
         <el-button
           type="primary"
-          @click="$router.push({path:'/zis/industry/add'})">
+          @click="$router.push({path:'/aw/industry/add'})">
           <i class="el-icon-plus"/>
           添加行业
         </el-button>
@@ -119,7 +120,7 @@
         :total="100">
       </el-pagination>
     </div>
-  </d2-container>
+  </aw-container>
 </template>
 
 <script>
@@ -190,7 +191,7 @@
       },
       goEdit(row){
       	this.$router.push({
-      		path:'/zis/industry/edit',
+      		path:'/aw/industry/edit',
           query: row
       	})
       },

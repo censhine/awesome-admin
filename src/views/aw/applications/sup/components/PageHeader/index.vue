@@ -5,7 +5,7 @@
     ref="form"
     size="mini"
     style="margin-bottom: -18px;">
-
+    <aw-header title="供应商资料审核"></aw-header>
     <el-form-item label="用户账号" prop="name">
       <el-input
         v-model="form.name"
@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import Address from '@/components/zis-address'
+import Address from '@/components/aw-address'
 
 export default {
   props: {

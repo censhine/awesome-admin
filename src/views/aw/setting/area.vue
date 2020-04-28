@@ -1,7 +1,8 @@
 <template>
-  <d2-container>
+  <aw-container>
+    <aw-header title="区域管理"></aw-header>
     <el-cascader-panel :options="options"></el-cascader-panel>
-  </d2-container>
+  </aw-container>
 </template>
 
 <script>

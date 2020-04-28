@@ -5,6 +5,7 @@
     ref="form"
     size="mini"
     style="margin-bottom: -18px;">
+    <aw-header title="品牌管理"></aw-header>
     <el-form-item label="所属分类" prop="goods_category_id">
       <el-cascader
         v-model="form.goods_category_id"

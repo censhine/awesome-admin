@@ -1,6 +1,6 @@
 <template>
-  <d2-container class="goods-comments">
-    <d2-back className="el-icon-delete" title="关闭" align="right"></d2-back>
+  <aw-container class="goods-comments">
+    <aw-back className="el-icon-delete" title="关闭" align="right"></aw-back>
     <el-row :gutter="20">
       <el-col :span="24">
         <div class="grid-content bg-purple">当前客服：{{currentService}}</div>
@@ -31,7 +31,7 @@
 
     <detail-dialog ref="detail"></detail-dialog>
 
-  </d2-container>
+  </aw-container>
 </template>
 
 <script>

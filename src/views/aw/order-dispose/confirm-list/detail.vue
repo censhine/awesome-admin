@@ -1,9 +1,9 @@
 <template>
-	<d2-container>
+	<aw-container>
 		<div class="wrap">
 			 <div class="header clearfix">
 				<span class="status left">当前订单状态：{{orderStatus[order.orderStatus]}}</span>
-				<el-button class='right' style='margin-top: 12px;margin-right: 20px;' type='success' size='medium'><d2-icon name="refresh"/>刷新</el-button>
+				<el-button class='right' style='margin-top: 12px;margin-right: 20px;' type='success' size='medium'><aw-icon name="refresh"/>刷新</el-button>
 				<el-button class='right' style='margin-top: 12px;margin-right: 20px;' @click="handleCloseTab" type='primary' size='medium'>关闭页面</el-button>
 				<el-button v-if='order.orderStatus==0' class='right' style='margin-top: 12px;margin-right: 20px;' @click='closeOrder' type='primary' size='medium'>关闭订单</el-button>
 				<el-button v-if='order.orderStatus==1' class='right' style='margin-top: 12px;margin-right: 20px;' @click='cancelOrder' type='primary' size='medium'>取消订单</el-button>
@@ -192,7 +192,7 @@
 	    </span>
     </el-dialog>
 
-	</d2-container>
+	</aw-container>
 </template>
 
 <script>
@@ -294,13 +294,13 @@
 			}
 		},
 		computed:{
-			...mapState('d2admin/page', [
+			...mapState('awadmin/page', [
 			  'opened',
 			  'current' //用户获取当前页面的地址，用于关闭
 			])
 			},
 			methods: {
-				...mapActions('d2admin/page', [
+				...mapActions('awadmin/page', [
 					'close',
 				]),
 				handleCloseTab() {
@@ -361,7 +361,7 @@
 				},
 				goLogistics() {
 					this.$router.push({
-						path: '/zis/order-list/logistics'
+						path: '/aw/order-list/logistics'
 					})
 				},
 				del() {

@@ -1,5 +1,6 @@
 <template>
-	<d2-container>
+	<aw-container>
+    <aw-header title="合同设置"></aw-header>
 		<div class="wrap">
 			<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-position='right' label-width="220px" class="demo-ruleForm" >
 	   	   	 <el-form-item label='代理合同每人申领免费次数：' prop='noPay'>
@@ -62,7 +63,7 @@
 	   </el-form>
 		</div>
 
-	</d2-container>
+	</aw-container>
 </template>
 
 <script>

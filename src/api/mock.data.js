@@ -191,3 +191,87 @@ export function getBrandList(data) {
     r(json)
   })
 }
+
+export function getUserList(data) {
+  return new Promise((r) => {
+    const json = {
+      "status": 200,
+      "message": "success",
+      "data": {
+        "items": [{
+          "id": 10001,
+          "user_name": "1800000000",
+          "nick_name": "小花",
+          "role": "普通用户",
+          "role_remark":"正常账号",
+          "consume": 19000,
+          "orders": 120,
+          "status": 1,
+        }, {
+          "id": 10001,
+          "user_name": "1800000000",
+          "nick_name": "小花",
+          "role": "普通用户",
+          "role_remark":"正常账号",
+          "consume": 19000,
+          "orders": 120,
+          "status": 1,
+        }, {
+          "id": 10001,
+          "user_name": "1800000000",
+          "nick_name": "小花",
+          "role": "普通用户",
+          "role_remark":"正常账号",
+          "consume": 19000,
+          "orders": 120,
+          "status": 1,
+        }], "total_result": 20
+      }
+    }
+    r(json)
+  })
+}
+
+
+export function getLogList(data) {
+  return new Promise((r) => {
+    const json = {
+      "status": 200,
+      "message": "success",
+      "data": {
+        "items": [{
+          "id": 10001,
+          "create_time": "2017-07-03 14:36:21",
+          "ip_address": "183.14.135.1",
+          "area": "广东省深圳市",
+          "login_type":"PC端登录",
+        }, {
+          "id": 10002,
+          "create_time": "2017-07-03 14:36:21",
+          "ip_address": "183.14.135.1",
+          "area": "广东省深圳市",
+          "login_type":"PC端登录",
+        }, {
+          "id": 10003,
+          "create_time": "2017-07-03 14:36:21",
+          "ip_address": "183.14.135.1",
+          "area": "广东省深圳市",
+          "login_type":"PC端登录",
+        }], "total_result": 20
+      }
+    }
+    r(json)
+  })
+}
+
+export function delCircleList(index) {
+    return new Promise(resolve => resolve({"status":200,"message":"success",data:{}}))
+}
+
+export function setCircleStatus(brand_id, status){
+  return new Promise(resolve => resolve({"status":200,"message":"success",data:{}}))
+}
+
+export function setBrandSort(obj) {
+  return new Promise(resolve => resolve({"status":200,"message":"success",data:{}}))
+}

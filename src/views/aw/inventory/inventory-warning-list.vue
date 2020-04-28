@@ -1,5 +1,6 @@
 <template>
-  <d2-container>
+  <aw-container>
+    <aw-header title="库存预警列表"></aw-header>
     <el-form
       :inline="true"
       :model="form"
@@ -17,7 +18,7 @@
         <el-button
           type="primary"
           @click="handleFormSubmit">
-          <d2-icon name="search"/>
+          <aw-icon name="search"/>
           查询
         </el-button>
       </el-form-item>
@@ -26,7 +27,7 @@
         <el-button
           type="default"
           @click="handleFormReset">
-          <d2-icon name="refresh"/>
+          <aw-icon name="refresh"/>
           刷新
         </el-button>
       </el-form-item>
@@ -53,7 +54,7 @@
         align="center"
       >
         <template slot-scope="scope">
-          <img src="../../../../public/image/goods/phone.jpg" alt="" style="width: 60px;height:60px">
+          <img src="https://img14.360buyimg.com/n0/jfs/t1/105985/22/15020/304059/5e6f451fEb5351ab6/6f2245c0dc9b647f.jpg" alt="" style="width: 60px;height:60px">
         </template>
       </el-table-column>
       <el-table-column
@@ -101,7 +102,7 @@
         :total="100">
       </el-pagination>
     </div>
-  </d2-container>
+  </aw-container>
 </template>
 
 <script>

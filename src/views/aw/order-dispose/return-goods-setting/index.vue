@@ -1,8 +1,9 @@
 <template>
-	<d2-container>
+	<aw-container>
+    <aw-header title="退货原因设置"></aw-header>
 		<div class="header">
 			 <el-button type='primary' size='medium' @click="dialogShow = true"><i class="el-icon-plus"></i>添加原因</el-button>
-	   		 <el-button type="default" size='medium'><d2-icon name="refresh"/>刷新</el-button>
+	   		 <el-button type="default" size='medium'><aw-icon name="refresh"/>刷新</el-button>
 		</div>
       <el-divider></el-divider>
 	    <el-table
@@ -118,7 +119,7 @@
 	    	<el-button type="primary" @click="submit2('ruleForm2')" size='medium'>确 定</el-button>
 	    </span>
     </el-dialog>
-	</d2-container>
+	</aw-container>
 </template>
 
 <script>

@@ -15,7 +15,7 @@
 <script>
     import vueEsign from  'vue-esign'
     export default {
-      name: "zis-esign",
+      name: "aw-esign",
       data () {
       return {
         lineWidth: 3,

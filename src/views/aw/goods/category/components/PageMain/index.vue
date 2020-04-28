@@ -1,9 +1,10 @@
 <template>
-  <div class="cs-p">
+  <div class="aw-p">
     <el-form
       :inline="true"
       size="small"
       @submit.native.prevent>
+      <aw-header title="分类管理"></aw-header>
       <el-form-item>
         <el-button
           type="primary"
@@ -77,7 +78,7 @@
           ref="tree">
           <span class="custom-tree-node action" slot-scope="{node, data}">
             <span class="brother-showing" style="width: 300px;" :class="{'status-tree': !data.status}">
-              <i v-if="auth.move" class="el-icon-sort move-tree cs-mr-5"/>
+              <i v-if="auth.move" class="el-icon-sort move-tree aw-mr-5"/>
               <i v-if="data.children" :class="`el-icon-${node.expanded ? 'folder-opened' : 'folder'}`"/>
               <i v-else class="el-icon-document"/>
               {{isFullName ? node.label : data.alias}}
@@ -177,14 +178,14 @@
           size="small">修改</el-button>
       </div>
 
-      <cs-storage
+      <aw-storage
         ref="storage"
         style="display: none"
         :limit="1"
         @confirm="_getStorageFileList">
-      </cs-storage>
+      </aw-storage>
 
-      <cs-upload
+      <aw-upload
         style="display: none"
         ref="upload"
         type="slot"
@@ -192,7 +193,7 @@
         :limit="1"
         :multiple="false"
         @confirm="_getUploadFileList">
-      </cs-upload>
+      </aw-upload>
 
     </el-dialog>
 
@@ -211,8 +212,8 @@ import util from '@/utils/util'
 
 export default {
   components: {
-    'csUpload': () => import('@/components/cs-upload'),
-    'csStorage': () => import('@/components/cs-storage')
+    'csUpload': () => import('@/components/aw-upload'),
+    'csStorage': () => import('@/components/aw-storage')
   },
   props: {
     treeData: {
@@ -372,12 +373,12 @@ export default {
   methods: {
     // 验证权限
     // _validationAuth() {
-    //   this.auth.add = this.$permission('/zis/goods/category/add')
-    //   this.auth.set = this.$permission('/zis/goods/category/set')
-    //   this.auth.del = this.$permission('/zis/goods/category/del')
-    //   this.auth.enable = this.$permission('/zis/goods/category/enable')
-    //   this.auth.disable = this.$permission('/zis/goods/category/disable')
-    //   this.auth.move = this.$permission('/zis/goods/category/move')
+    //   this.auth.add = this.$permission('/aw/goods/category/add')
+    //   this.auth.set = this.$permission('/aw/goods/category/set')
+    //   this.auth.del = this.$permission('/aw/goods/category/del')
+    //   this.auth.enable = this.$permission('/aw/goods/category/enable')
+    //   this.auth.disable = this.$permission('/aw/goods/category/disable')
+    //   this.auth.move = this.$permission('/aw/goods/category/move')
     // },
     // 弹出编辑对话框
     handleUpdate(index) {
@@ -744,7 +745,7 @@ export default {
 </style>
 
 <style lang="scss">
-  .cs-p .el-tree-node{
+  .aw-p .el-tree-node{
     padding-top:10px;
     padding-bottom:10px;
     border:1px solid #ededed

@@ -1,6 +1,6 @@
 <template>
-	<d2-container>
-		<div class="zis-table-view">
+	<aw-container>
+		<div class="aw-table-view">
 			<div class="title clearfix">
 				<span>退货商品</span>
 				<span class="right back" @click="$router.go(-1)">返回</span>
@@ -8,7 +8,7 @@
 			<el-table border :data="tableData" style="width: 100%">
 				<el-table-column prop="goodsImg" label="商品图片" align="center">
 					<template slot-scope="scope">
-						<img src="../../../../../public/image/goods/phone.jpg" alt="" style="width: 60px;height:60px">
+						<img src="https://img14.360buyimg.com/n0/jfs/t1/105985/22/15020/304059/5e6f451fEb5351ab6/6f2245c0dc9b647f.jpg" alt="" style="width: 60px;height:60px">
 					</template>
 				</el-table-column>
 				<el-table-column prop="goodsName" label="商品名称">
@@ -221,11 +221,11 @@
 			</div>
 
 		</div>
-	</d2-container>
+	</aw-container>
 </template>
 
 <script>
-	import Address from '@/components/zis-address';
+	import Address from '@/components/aw-address';
 	export default {
 		components: {
 			Address
@@ -336,7 +336,7 @@
   .right{
     float: right;
   }
-	.zis-table-view {
+	.aw-table-view {
 		.title {
 			height: 40px;
 			line-height: 40px;

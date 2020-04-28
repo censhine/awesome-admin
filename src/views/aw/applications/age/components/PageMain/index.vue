@@ -1,5 +1,5 @@
 <template>
-  <div class="cs-p">
+  <div class="aw-p">
     <el-table
       border
       v-loading="loading"
@@ -11,61 +11,54 @@
 
       <el-table-column
         label="用户ID"
-        prop="name"
-        sortable="custom"
+        prop="id"
         min-width="120">
       </el-table-column>
 
       <el-table-column
         label="用户账号"
-        prop="phonetic"
-        sortable="custom"
+        prop="user_name"
         min-width="90">
       </el-table-column>
 
       <el-table-column
         label="用户昵称"
-        prop="category_name"
+        prop="nick_name"
         :show-overflow-tooltip="true"
         min-width="140">
       </el-table-column>
 
       <el-table-column
         label="联系方式"
-        prop="sort"
+        prop="phone"
         align="center"
-        sortable="custom"
         min-width="110">
       </el-table-column>
 
       <el-table-column
         label="地区"
-        prop="sort"
+        prop="area"
         align="center"
-        sortable="custom"
         min-width="110">
       </el-table-column>
 
       <el-table-column
         label="行业"
-        prop="sort"
+        prop="industry"
         align="center"
-        sortable="custom"
         min-width="110">
       </el-table-column>
 
       <el-table-column
         label="提交时间"
-        prop="sort"
+        prop="create_time"
         align="center"
-        sortable="custom"
         min-width="110">
       </el-table-column>
 
       <el-table-column
         label="审核状态"
         prop="status"
-        sortable="custom"
         align="center"
         :show-overflow-tooltip=true
         width="100">
@@ -88,7 +81,7 @@
         <template slot-scope="scope">
 
           <el-button
-            @click="$router.push({path:'/zis/applications/age/view?id='+scope.$index,query:{ ...currentTableData[scope.$index] }})"
+            @click="$router.push({path:'/aw/applications/age/view?id='+scope.$index,query:{ ...currentTableData[scope.$index] }})"
             size="mini"
             type="text">查看</el-button>
           <el-button
@@ -118,9 +111,9 @@ import { getGoodsCategoryItem } from '@/api/goods/category'
 
 export default {
   components: {
-    'select2':()=>import('@/components/zis-select2'),
-    'csUpload': () => import('@/components/cs-upload'),
-    'csStorage': () => import('@/components/cs-storage'),
+    'select2':()=>import('@/components/aw-select2'),
+    'csUpload': () => import('@/components/aw-upload'),
+    'csStorage': () => import('@/components/aw-storage'),
     'Verify': ()=>import('../../verify')
   },
   props: {
@@ -287,13 +280,13 @@ export default {
   methods: {
     // 验证权限
     _validationAuth() {
-      this.auth.add = this.$permission('/zis/goods/brand/add')
-      this.auth.set = this.$permission('/zis/goods/brand/set')
-      this.auth.del = this.$permission('/zis/goods/brand/del')
-      this.auth.sort = this.$permission('/zis/goods/brand/sort')
-      this.auth.url = this.$permission('/zis/goods/brand/url')
-      this.auth.enable = this.$permission('/zis/goods/brand/enable')
-      this.auth.disable = this.$permission('/zis/goods/brand/disable')
+      this.auth.add = this.$permission('/aw/goods/brand/add')
+      this.auth.set = this.$permission('/aw/goods/brand/set')
+      this.auth.del = this.$permission('/aw/goods/brand/del')
+      this.auth.sort = this.$permission('/aw/goods/brand/sort')
+      this.auth.url = this.$permission('/aw/goods/brand/url')
+      this.auth.enable = this.$permission('/aw/goods/brand/enable')
+      this.auth.disable = this.$permission('/aw/goods/brand/disable')
     },
     // 获取列表中的编号
     _getIdList(val) {

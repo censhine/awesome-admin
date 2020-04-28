@@ -1,15 +1,34 @@
-import playground from './modules/playground'
-import frame from './modules/frame'
-import awCrud from './modules/aw-crud'
-import plugins from './modules/plugins'
-import charts from './modules/charts'
-import components from './modules/components'
-import element from './modules/element'
-import business from './modules/business'
+// import playground from './modules/playground'
+// import frame from './modules/frame'
+// import awCrud from './modules/aw-crud'
+// import plugins from './modules/plugins'
+// import charts from './modules/charts'
+// import components from './modules/components'
+// import element from './modules/element'
+// import business from './modules/business'
 import goods from "./modules/goods";
 import applications from "./modules/applications";
-import contract from "./modules/contract"
+
 import circles from "./modules/circles";
+import user from './modules/user'
+
+import goodsVerify from "./modules/goods-verify";
+import financial from "./modules/financial";
+import contractVerify from "./modules/contract-verify";
+import freightTp from './modules/freight-tp'
+import inventory from "./modules/inventory";
+import orderDispose from './modules/order-dispose'
+import orderManger from './modules/order-manger'
+import shopmanage from "./modules/shopmanage";
+import operTpl from "./modules/oper-tpl"
+import rights from "./modules/rights"
+
+//订单管理(通用)
+import order from './modules/order-list'
+
+import Setting from './modules/setting'
+
+import industry from "./modules/industry";
 
 import layoutHeaderAside from '@/layout/header-aside'
 
@@ -61,18 +80,31 @@ const frameIn = [
       }
     ]
   },
-  playground,
-  frame,
-  awCrud,
-  plugins,
-  charts,
-  components,
-  element,
-  business,
+  //playground,
+  //frame,
+  //d2Crud,
+  //plugins,
+  //charts,
+  //components,
+  //element,
+  //business,
   goods,
   applications,
-  contract,
-  circles
+  user,
+  circles,
+  goodsVerify,
+  industry,
+  contractVerify,
+  operTpl,
+  inventory,
+  financial,
+  freightTp,
+  orderDispose,
+  orderManger,
+  shopmanage,
+  order,
+  Setting,
+  rights
 ]
 
 /**

@@ -1,5 +1,5 @@
 <template>
-	<d2-container>
+	<aw-container>
 		<div class="wrap" id="logistics">
 			<div class="title clearfix">
 				<span class="lf_title">物流跟踪</span>
@@ -16,7 +16,7 @@
 			  </el-timeline>
 			</div>
 		</div>
-	</d2-container>
+	</aw-container>
 </template>
 
 <script>
@@ -46,13 +46,13 @@
 			}
 		},
 		computed:{
-			...mapState('d2admin/page', [
+			...mapState('awadmin/page', [
 			  'opened',
 			  'current' //用户获取当前页面的地址，用于关闭
 			])
 		},
 		methods:{
-			...mapActions('d2admin/page',[
+			...mapActions('awadmin/page',[
     		'close',
 			]),
 			handleCloseTab(){

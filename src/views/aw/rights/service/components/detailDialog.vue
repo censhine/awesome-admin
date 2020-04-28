@@ -70,7 +70,7 @@ export default {
   mounted() {
     Promise.all([
       //getGoodsCategoryList(null),
-      this.$store.dispatch('d2admin/db/databasePage', { user: true })
+      this.$store.dispatch('awadmin/db/databasePage', { user: true })
     ])
       .then(res => {
         //this.cat = util.formatDataToTree(res[0].data, 'goods_category_id')

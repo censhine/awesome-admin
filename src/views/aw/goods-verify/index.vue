@@ -1,5 +1,6 @@
 <template>
-  <d2-container>
+  <aw-container>
+    <aw-header title="商品审核列表"></aw-header>
     <div class="btn-group">
       <span class="btn-list"
             :class="{'active':index===zIndex}"
@@ -49,7 +50,7 @@
         <el-button
           type="primary"
           @click="handleFormSubmit">
-          <d2-icon name="search"/>
+          <aw-icon name="search"/>
           查询
         </el-button>
       </el-form-item>
@@ -58,7 +59,7 @@
         <el-button
           type="default"
           @click="handleFormReset">
-          <d2-icon name="refresh"/>
+          <aw-icon name="refresh"/>
           刷新
         </el-button>
       </el-form-item>
@@ -66,7 +67,7 @@
         <el-button
           type="primary"
           @click="goAdd">
-          <d2-icon name="add"/>
+          <aw-icon name="add"/>
           添加商品
         </el-button>
       </el-form-item>
@@ -180,7 +181,7 @@
   </span>
     </el-dialog>-->
 
-  </d2-container>
+  </aw-container>
 </template>
 
 <script>
@@ -262,7 +263,7 @@
         })
       },
       handleView(row){
-        this.$router.push({path:'/zis/goods-verify/detail',query:row})
+        this.$router.push({path:'/aw/goods-verify/detail',query:row})
       },
       del() {
         this.$confirm('你确定要删除此商品吗?', '提示', {
@@ -298,7 +299,7 @@
       },
       goAdd(){
       	this.$router.push({
-      		path:'/zis/goods-verify/add'
+      		path:'/aw/goods-verify/add'
       	})
       },
       	 handleSizeChange(val) {

@@ -1,24 +1,24 @@
 <template>
-  <d2-container>
+  <aw-container>
     <div id="table-info1">
       <el-row>
         <el-col :span="6">
-          <el-row class="zis-item-box">
-            <el-col :span="8" class="zis-items-left">
+          <el-row class="aw-item-box">
+            <el-col :span="8" class="aw-items-left">
               <i class="el-icon-s-order"/>
             </el-col>
-            <el-col :span="16" class="zis-items-right">
+            <el-col :span="16" class="aw-items-right">
               <el-row class="name">历史接待次数</el-row>
               <el-row class="count">889</el-row>
             </el-col>
           </el-row>
         </el-col>
         <el-col :span="6">
-          <el-row class="zis-item-box">
-            <el-col :span="8" class="zis-items-left">
+          <el-row class="aw-item-box">
+            <el-col :span="8" class="aw-items-left">
               <i class="el-icon-platform-eleme"/>
             </el-col>
-            <el-col :span="16" class="zis-items-right">
+            <el-col :span="16" class="aw-items-right">
               <el-row class="name">历史接待次数</el-row>
               <el-row class="count">889</el-row>
             </el-col>
@@ -26,22 +26,22 @@
         </el-col>
 
         <el-col :span="6">
-          <el-row class="zis-item-box">
-            <el-col :span="8" class="zis-items-left">
+          <el-row class="aw-item-box">
+            <el-col :span="8" class="aw-items-left">
               <i class="el-icon-s-help"/>
             </el-col>
-            <el-col :span="16" class="zis-items-right">
+            <el-col :span="16" class="aw-items-right">
               <el-row class="name">今日接待次数</el-row>
               <el-row class="count">889</el-row>
             </el-col>
           </el-row>
         </el-col>
         <el-col :span="6">
-          <el-row class="zis-item-box">
-            <el-col :span="8" class="zis-items-left">
+          <el-row class="aw-item-box">
+            <el-col :span="8" class="aw-items-left">
               <i class="el-icon-s-finance"/>
             </el-col>
-            <el-col :span="16" class="zis-items-right">
+            <el-col :span="16" class="aw-items-right">
               <el-row class="name">今日接待人数</el-row>
               <el-row class="count">889</el-row>
             </el-col>
@@ -67,7 +67,7 @@
         <el-button
           type="primary"
           @click="handleFormSubmit">
-          <d2-icon name="search"/>
+          <aw-icon name="search"/>
           查询
         </el-button>
       </el-form-item>
@@ -76,7 +76,7 @@
         <el-button
           type="success"
           @click="handleFormReset">
-          <d2-icon name="refresh"/>
+          <aw-icon name="refresh"/>
           刷新
         </el-button>
       </el-form-item>
@@ -187,7 +187,7 @@
       </el-pagination>
     </div>
 
-  </d2-container>
+  </aw-container>
 </template>
 
 <script>
@@ -235,7 +235,7 @@
     methods: {
       goDetail(row){
         this.$router.push({
-          path:'/zis/goods/comments/detail',
+          path:'/aw/goods/comments/detail',
           query: row
         })
       },
@@ -287,8 +287,8 @@
     margin-top: 40px;
   }
 
-  .zis-item-box{
-    .zis-items-left{
+  .aw-item-box{
+    .aw-items-left{
       >i{
         font-size: 80px;
         color: $color-primary;

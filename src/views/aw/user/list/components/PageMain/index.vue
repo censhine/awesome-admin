@@ -1,5 +1,5 @@
 <template>
-  <div class="cs-p">
+  <div class="aw-p">
     <el-table
       border
       v-loading="loading"
@@ -74,7 +74,7 @@
         <template slot-scope="scope">
 
           <el-button
-            @click="$router.push({path:'/zis/user/list/view',query:{...currentTableData[scope.$index]}})"
+            @click="$router.push({path:'/aw/user/list/view',query:{...currentTableData[scope.$index]}})"
             size="mini"
             type="text">查看</el-button>
           <el-button
@@ -219,8 +219,8 @@ import {delCircleList} from '@/api/mock.data'
 
 export default {
   components: {
-    'csUpload': () => import('@/components/cs-upload'),
-    'csStorage': () => import('@/components/cs-storage'),
+    'csUpload': () => import('@/components/aw-upload'),
+    'csStorage': () => import('@/components/aw-storage'),
     'add': ()=>import('../../add')
   },
   props: {
@@ -365,13 +365,13 @@ export default {
   methods: {
     // 验证权限
     _validationAuth() {
-      this.auth.add = this.$permission('/zis/user/list/add')
-      this.auth.set = this.$permission('/zis/user/list/set')
-      this.auth.del = this.$permission('/zis/user/list/del')
-      this.auth.sort = this.$permission('/zis/user/list/sort')
-      this.auth.url = this.$permission('/zis/user/list/url')
-      this.auth.enable = this.$permission('/zis/user/list/enable')
-      this.auth.disable = this.$permission('/zis/user/list/disable')
+      this.auth.add = this.$permission('/aw/user/list/add')
+      this.auth.set = this.$permission('/aw/user/list/set')
+      this.auth.del = this.$permission('/aw/user/list/del')
+      this.auth.sort = this.$permission('/aw/user/list/sort')
+      this.auth.url = this.$permission('/aw/user/list/url')
+      this.auth.enable = this.$permission('/aw/user/list/enable')
+      this.auth.disable = this.$permission('/aw/user/list/disable')
     },
     // 获取列表中的编号
     _getIdList(val) {

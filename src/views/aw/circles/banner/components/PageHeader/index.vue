@@ -5,6 +5,7 @@
     ref="form"
     size="mini"
     style="margin-bottom: -18px;">
+    <aw-header title="轮播图管理"></aw-header>
     <el-form-item>
       <el-button
         type="primary"

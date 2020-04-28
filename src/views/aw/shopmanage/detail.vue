@@ -1,5 +1,5 @@
 <template>
-	<d2-container>
+	<aw-container>
 		<div class="wrap">
 			<div class="main">
 					<h3>代理商详情</h3>
@@ -39,7 +39,7 @@
     </el-pagination>
 			</div>
 		</div>
-	</d2-container>
+	</aw-container>
 </template>
 
 <script>
@@ -58,49 +58,49 @@
 				goodsList:[
 
 					{
-						goodsImg:require('../../../../public/image/goods/phone.jpg'),
+						goodsImg:'https://img14.360buyimg.com/n0/jfs/t1/105985/22/15020/304059/5e6f451fEb5351ab6/6f2245c0dc9b647f.jpg',
 						goodsText:'iphone7 热卖 正品iphone7 热卖 正品',
 						goodsPrice:6000,
 						amount:1000
 					},
 					{
-						goodsImg:require('../../../../public/image/goods/phone.jpg'),
+						goodsImg:'https://img14.360buyimg.com/n0/jfs/t1/105985/22/15020/304059/5e6f451fEb5351ab6/6f2245c0dc9b647f.jpg',
 						goodsText:'iphone8 热卖 正品',
 						goodsPrice:8000,
 						amount:2000
 					},
 					{
-						goodsImg:require('../../../../public/image/goods/phone.jpg'),
+						goodsImg:'https://img14.360buyimg.com/n0/jfs/t1/105985/22/15020/304059/5e6f451fEb5351ab6/6f2245c0dc9b647f.jpg',
 						goodsText:'iphone9热卖 正品',
 						goodsPrice:11000,
 						amount:800
 					},
 					{
-						goodsImg:require('../../../../public/image/goods/phone.jpg'),
+						goodsImg:'https://img14.360buyimg.com/n0/jfs/t1/105985/22/15020/304059/5e6f451fEb5351ab6/6f2245c0dc9b647f.jpg',
 						goodsText:'iphoneX 热卖 正品',
 						goodsPrice:11600,
 						amount:600
 					},
 					{
-						goodsImg:require('../../../../public/image/goods/phone.jpg'),
+						goodsImg:'https://img14.360buyimg.com/n0/jfs/t1/105985/22/15020/304059/5e6f451fEb5351ab6/6f2245c0dc9b647f.jpg',
 						goodsText:'iphone7 热卖 正品',
 						goodsPrice:6000,
 						amount:1000
 					},
 					{
-						goodsImg:require('../../../../public/image/goods/phone.jpg'),
+						goodsImg:'https://img14.360buyimg.com/n0/jfs/t1/105985/22/15020/304059/5e6f451fEb5351ab6/6f2245c0dc9b647f.jpg',
 						goodsText:'iphone8 热卖 正品',
 						goodsPrice:8000,
 						amount:2000
 					},
 					{
-						goodsImg:require('../../../../public/image/goods/phone.jpg'),
+						goodsImg:'https://img14.360buyimg.com/n0/jfs/t1/105985/22/15020/304059/5e6f451fEb5351ab6/6f2245c0dc9b647f.jpg',
 						goodsText:'iphone9热卖 正品',
 						goodsPrice:11000,
 						amount:800
 					},
 					{
-						goodsImg:require('../../../../public/image/goods/phone.jpg'),
+						goodsImg:'https://img14.360buyimg.com/n0/jfs/t1/105985/22/15020/304059/5e6f451fEb5351ab6/6f2245c0dc9b647f.jpg',
 						goodsText:'iphoneX 热卖 正品',
 						goodsPrice:11600,
 						amount:600

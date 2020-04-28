@@ -1,5 +1,6 @@
 <template>
-  <d2-container>
+  <aw-container>
+    <aw-header title="支付设置"></aw-header>
     <el-form
       :inline="true"
       :model="form"
@@ -74,7 +75,7 @@
         :total="100">
       </el-pagination>
     </div>
-  </d2-container>
+  </aw-container>
 </template>
 
 <script>
@@ -168,7 +169,7 @@
       },
       goEdit(row){
         this.$router.push({
-          path:'/zis/setting/payment-edit',
+          path:'/aw/setting/payment-edit',
           query:row
         })
       },

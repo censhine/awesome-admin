@@ -1,8 +1,8 @@
 <template>
-	<d2-container>
+	<aw-container>
 		<div class="wrap">
 			<div class="main">
-        <d2-back title="返回" align="right"></d2-back>
+        <aw-back title="返回" align="right"></aw-back>
 					<h3>店铺详情</h3>
 				<div class="age-info">
 					<p>店名：<span>{{agent.shopName}}</span></p>
@@ -14,7 +14,7 @@
 				<div class="goods-list">
 					<h4>商品列表</h4>
 					<ul>
-						<li v-for="(item,index) in goodsList" :key='index'>
+						<li v-for="(item,index) in goodsList" :key='index' @click="$router.push({path:'/aw/goods-verify/detail',query:item})">
 							<div>
 								<div class="goods-img">
 									<img :src="item.goodsImg" alt="" />
@@ -40,15 +40,12 @@
     </el-pagination>
 			</div>
 		</div>
-	</d2-container>
+	</aw-container>
 </template>
 
 <script>
 	export default{
 		name:'ageDetail',
-    components:{
-		  d2Back:()=>import('@/components/d2-back'),
-    },
 		data(){
 			return{
 				agent:{

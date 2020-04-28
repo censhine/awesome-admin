@@ -1,5 +1,6 @@
 <template>
-  <d2-container>
+  <aw-container>
+    <aw-header title="平台流水"></aw-header>
   	<el-tabs v-model="activeName" type="card" @tab-click="handleClicks">
 	    <el-tab-pane label="知豆" :name="tabs[0]">
 	    	<el-form
@@ -20,7 +21,7 @@
         <el-button
           type="primary"
           @click="handleFormSubmit">
-          <d2-icon name="search"/>
+          <aw-icon name="search"/>
           查询
         </el-button>
       </el-form-item>
@@ -29,7 +30,7 @@
         <el-button
           type="default"
           @click="handleFormReset">
-          <d2-icon name="refresh"/>
+          <aw-icon name="refresh"/>
           	刷新
         </el-button>
       </el-form-item>
@@ -101,7 +102,7 @@
         <el-button
           type="primary"
           @click="handleFormSubmit">
-          <d2-icon name="search"/>
+          <aw-icon name="search"/>
           查询
         </el-button>
       </el-form-item>
@@ -110,7 +111,7 @@
         <el-button
           type="success"
           @click="handleFormReset">
-          <d2-icon name="refresh"/>
+          <aw-icon name="refresh"/>
           	刷新
         </el-button>
       </el-form-item>
@@ -123,6 +124,7 @@
         </el-button>
       </el-form-item>
     </el-form>
+        <el-divider></el-divider>
 	    	  <el-table
 	    	  	v-if='activeName===tabs[1]'
       :data="tableData2"
@@ -180,7 +182,7 @@
         <el-button
           type="primary"
           @click="handleFormSubmit">
-          <d2-icon name="search"/>
+          <aw-icon name="search"/>
           查询
         </el-button>
       </el-form-item>
@@ -189,7 +191,7 @@
         <el-button
           type="success"
           @click="handleFormReset">
-          <d2-icon name="refresh"/>
+          <aw-icon name="refresh"/>
           	刷新
         </el-button>
       </el-form-item>
@@ -202,6 +204,7 @@
         </el-button>
       </el-form-item>
     </el-form>
+        <el-divider></el-divider>
 	    	  <el-table
 	    	  	v-if='activeName===tabs[2]'
       :data="tableData3"
@@ -242,7 +245,7 @@
 	    </el-tab-pane>
  	 </el-tabs>
 
-  </d2-container>
+  </aw-container>
 </template>
 
 <script>

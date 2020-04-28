@@ -1,6 +1,6 @@
 <template>
-	<d2-container>
-		<div class="zis-table-view">
+	<aw-container>
+		<div class="aw-table-view">
 			<div class="title clearfix">
 				<span>服务单信息</span>
 				<span class="right back" @click="$router.go(-1)">返回</span>
@@ -77,7 +77,7 @@
 				</div>
 			</div>
 		</div>
-	</d2-container>
+	</aw-container>
 </template>
 
 <script>
@@ -143,7 +143,7 @@
 	}
 </style>
 <style lang="scss">
-	.zis-table-view {
+	.aw-table-view {
 		.title {
 			height: 40px;
 			line-height: 40px;
