@@ -1,5 +1,5 @@
 <template>
-   <div class="menu_left cflex" :style="{width:leftsidebar.width+'px'}">
+   <div class="menu_left cflex leftmenu_box" :style="{width:leftsidebar.width+'px'}">
         <div class="menu_page_top rflex">
 <!--            <img :class='["logo",{"closeLogo":!sidebar.opened}]' :src="logo" alt="商家管理系统" >-->
             <!-- <span class='title' v-show="sidebar.opened">商家管理系统<i>Admin</i></span> -->
@@ -8,6 +8,7 @@
             <el-menu
                 mode="vertical"
                 theme="dark"
+                :uniqueOpened=true
                 :show-timeout="200"
                 :default-active="$route.path"
                 :collapse="isCollapsed"
@@ -24,7 +25,6 @@
                                 >
                                 <i v-if="item.meta.icon" class="item.meta.icon" />
                                 <span v-if="item.meta.title" slot="title">{{item.name}}</span>
-                              <el-divider/>
                             </el-menu-item>
                         </router-link>
 
@@ -33,7 +33,7 @@
                             <template slot="title">
                                 <i v-if="item.meta.icon" class="item.meta.icon" />
                                 <span class="title" v-if="item.meta.title" slot="title">{{ item.name}}</span>
-                              <el-divider/>
+
                             </template>
                             <!--直接定位到子路由上，子路由也可以实现导航功能-->
                             <router-link v-for="(citem,cindex) in item.children" :to="getIindex(citem,item,cindex)"  :key="cindex">
@@ -53,15 +53,14 @@
 <script>
 import { mapGetters } from 'vuex'
 import * as mUtils from "@/utils/mUtils";
-//import logoImg from "/image/theme/d2/logo/all.png";
 
 export default {
   name: "left-Menu",
   data() {
     return {
        menuObj:{
-         bgColor:'#fff',
-         textColor:'#666',
+         bgColor:'#33333d',
+         textColor:'#999',
          activeTextColor:'#ff6428',
        },
        //logo:logoImg
@@ -76,7 +75,8 @@ export default {
       ]),
   },
   created(){
-      console.log(this.menuIndex)
+      console.log(this.isCollapsed)
+      console.log(this.leftsidebar)
   },
   mounted(){
   },
@@ -88,7 +88,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   $left-bgColor:#fff;  // 左侧菜单背景颜色;
   $icon-link: #324eff;
     .menu_left{
@@ -100,7 +100,8 @@ export default {
          font-weight: 600;
        }
        .is-active{
-         color:#2f74ff !important;
+         color:$color-primary !important;
+         font-weight: 500;
        }
       .el-submenu__title{
         padding-left: 0 !important;
@@ -144,4 +145,48 @@ export default {
     height: 0 !important;
   }
 
+  .leftmenu_box{
+    #leftMenu .el-menu-item.is-active {
+      background: rgba(0, 0, 0, 0.5) !important;
+      border-left: 1px solid $color-primary;
+    }
+
+    .is-opened .el-submenu__title {
+      background: black !important;
+      color:white !important;
+    }
+
+    .is-opened .el-menu--inline{
+      /*border-bottom: 1px solid #ededed;*/
+    }
+
+    .el-menu-item .is-active{
+      background: black;
+    }
+
+    .el-menu-item{
+      background: black !important;
+    }
+  }
+  .menu_left .title{
+    padding-left: 20px;
+  }
+
+  .el-menu-item.is-active{
+    background: $color-primary !important;
+    color: white !important;
+  }
+  .el-submenu .el-menu-item:hover{
+    background: $color-primary !important;
+    color: white !important;
+  }
+  .el-submenu .el-menu-item{
+    height: 38px !important;
+    line-height: 38px !important;
+  }
+
+  .el-menu-item, .el-submenu__title{
+    height: 42px !important;
+    line-height: 42px !important;
+  }
 </style>
