@@ -13,10 +13,20 @@ import serverConfig from "@/plugin/axios/serverConfig";
 import router from './router'
 import { menuHeader, menuAside } from '@/menu'
 import { frameInRoutes } from '@/router/routes'
-
+import initFilter from '@/utils/filter/vueFilter'
 // 核心插件
 Vue.use(awadmin)
-
+initFilter()
+router.afterEach((to,from,next) => {
+  window.scrollTo(0,0);
+  // chrome
+  document.body.scrollTop = 0
+  // firefox
+  document.documentElement.scrollTop = 0
+  // safari
+  window.pageYOffset = 0
+});
+//let permissions = store.state.d2admin.leftmenu.rightData
 new Vue({
   router,
   store,

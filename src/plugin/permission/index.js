@@ -8,7 +8,7 @@ export default {
         return false
       }
 
-      const index = auth.findIndex(item => item.url === path)
+      const index = auth.findIndex(item => item === path)
       return index !== -1
     }
   }

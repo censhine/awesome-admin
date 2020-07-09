@@ -3,6 +3,15 @@ import request from '@/plugin/axios/request'
 const VERSION = '/v1'
 const CIRCLE_MODULE_BASE_URL = VERSION+'/circle'
 
+export function getMenuList(path,data={},params={},method='post') {
+  return request({
+    url: path,
+    method: method,
+    data,
+    params
+  })
+}
+
 /**
  * 商圈管理
  * @param {Object} data

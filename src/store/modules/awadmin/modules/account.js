@@ -35,6 +35,15 @@ export default {
             await dispatch('awadmin/user/set', {
               name: res.name
             }, { root: true })
+
+            //权限菜单
+            await dispatch('awadmin/db/set', {
+              dbName: 'database',
+              path: '$menu.sourceData',
+              value: res.menu,
+              user: true
+            }, { root: true })
+
             // 用户登录后从持久化数据加载一系列的设置
             await dispatch('load')
             // 结束
@@ -106,6 +115,8 @@ export default {
         await dispatch('awadmin/size/load', null, { root: true })
         // DB -> store 持久化数据加载颜色设置
         await dispatch('awadmin/color/load', null, { root: true })
+        // DB -> store 持久化菜单、权限设置
+        await dispatch('awadmin/leftmenu/sourceDataLoad', null, { root: true })
         // end
         resolve()
       })

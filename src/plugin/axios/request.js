@@ -1,141 +1,130 @@
+import store from '@/store'
+import qs from 'qs'
 import axios from 'axios'
-import util from '@/utils/util'
-import store from '@/store/index'
-import { Message, MessageBox } from 'element-ui'
+import { Message,MessageBox } from 'element-ui'
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import serviceConfig from './serviceConfig'
+import util from '@/libs/util'
+import router from "@/router";
 
-axios.defaults.withCredentials = true
-
+Vue.use(VueRouter)
 // 创建一个错误
-function errorCreate(msg) {
-  const err = new Error(msg)
-  errorLog(err)
+function errorCreate (msg) {
+  const error = new Error(msg)
+  errorLog(error)
+  throw error
 }
 
 // 记录和显示错误
-function errorLog(err) {
-  // 显示提示
-  Message({
-    message: err.message,
-    type: 'error',
-    duration: 5 * 1000
-  })
-
+function errorLog (error) {
   // 添加到日志
-  store.dispatch('awadmin/log/push', {
-    type: 'error',
-    info: '数据请求异常',
-    message: err.message
-  }).then((res) => {
-      console.log('res:',res)
-    }).catch(e=>{
-    console.log('error:',e);
+  store.dispatch('d2admin/log/push', {
+    message: '数据请求异常',
+    type: 'danger',
+    meta: {
+      error
+    }
   })
-
   // 打印到控制台
   if (process.env.NODE_ENV === 'development') {
     util.log.danger('>>>>>> Error >>>>>>')
-    console.log(err)
+    console.log(error)
   }
+  // 显示提示
+  Message({
+    message: error.message,
+    type: 'error',
+    duration: 5 * 1000
+  })
 }
 
-// 创建一个axios实例
+// 创建一个 axios 实例
 const service = axios.create({
-  // api的base_url
-  baseURL: util.serverConfig.BASE_API,
-  // request timeout
-  timeout: 30000,
-  // 默认使用简单请求,避免复杂请求(多一次OPTIONS请求)
-  // 如有特殊需求或协议不同,可修改为例如"application/json; charset=utf-8"
-  headers: { 'Content-Type': 'text/plain; charset=utf-8' }
-  // 启用跨域访问携带Cookie
-  // withCredentials: true
+  baseURL: serviceConfig.VUE_SUP_API,
+  timeout: 5000, // 请求超时时间
 })
 
 // 请求拦截器
 service.interceptors.request.use(
   config => {
-    setDefaultParams(config)
-    refreshToken(config)
-    //console.log('interceptors request config:',config);
+    // 在请求发送之前做一些处理
+
+    const token = util.cookies.get('token')
+    if(token!=undefined){
+      config.headers['token'] = token
+    }
+    // 让每个请求携带token-- ['X-Token']为自定义key 请根据实际情况自行修改
+
+    config.headers['Content-Type'] = 'application/json;charset=utf-8'
+//  if(config.method=='post'){
+//  	config.data = qs.stringify(config.data)
+//  }
     return config
-  }, err => {
-    errorLog(err)
-    console.log('interceptors request err:',err);
-    return Promise.resolve(err)
+  },
+  error => {
+    // 发送失败
+    return Promise.reject(error)
   }
 )
 
 // 响应拦截器
 service.interceptors.response.use(
   response => {
-    let dataAxios = response.data
-    dataAxios = eval('(' + dataAxios + ')');
-    //console.log(dataAxios)
-    const { status } = dataAxios // response.data.status
-    console.log('interceptors response status:',status)
-    if (status === 200 || response.config.responseType === 'blob') {
+    // dataAxios 是 axios 返回数据中的 data
+    const dataAxios = response.data
+    // 这个状态码是和后端约定的
+    const { code } = dataAxios
+    // 根据 code 进行判断
+    if (code === undefined) {
+      // 如果没有 code 代表这不是项目后端开发的接口 比如可能是 D2Admin 请求最新版本
       return dataAxios
     } else {
-      status === 401 ? reAuthorize() : errorCreate(dataAxios.message)
-      return Promise.reject(dataAxios.message ? dataAxios.message : response)
+      // 有 code 代表这是一个后端接口 可以进行进一步的判断
+      switch (code) {
+        case '100':
+          // [ 示例 ] code === 0 代表没有错误
+          return dataAxios
+        case '500':
+        reAuthorize()
+          // [ 示例 ] 其它和后台约定的 code
+//        errorCreate(`[ code: xxx ] ${dataAxios.msg}: ${response.config.url}`)
+          break
+        default:
+          // 不是正确的 code ${response.config.url}
+          errorCreate(`${dataAxios.tip}`)
+          break
+      }
     }
   },
   error => {
-    if (error.response) {
-      error.message = error.response.data.message
-      if (error.response.status === 401) {
-        reAuthorize()
+    if(error.toString().includes(403)){
+      MessageBox('您的授权已过期,需重新登录！').then(() => {
+        router.push({name:'login'})
+      }).catch(() => {
+        router.push({name:'login'})
+      });
+      return
+    }
+    if (error && error.response) {
+      switch (error.response.status) {
+        case 400: error.message = '请求错误'; break
+        case 401: error.message = '未授权，请登录'; break
+        case 404: error.message = `请求地址出错: ${error.response.config.url}`; break
+        case 408: error.message = '请求超时'; break
+//      case 500: error.message = '服务器内部错误'; break
+        case 501: error.message = '服务未实现'; break
+        case 502: error.message = '网关错误'; break
+        case 503: error.message = '服务不可用'; break
+        case 504: error.message = '网关超时'; break
+        case 505: error.message = 'HTTP版本不受支持'; break
+        default: break
       }
     }
-
     errorLog(error)
-    return Promise.reject(error.response ? error.response.data : error)
+    return Promise.reject(error)
   }
 )
-
-// 刷新令牌
-function refreshToken(config) {
-  const token = util.cookies.get('token')
-  if (!token || token === 'undefined') {
-    return
-  }
-
-  // 以下接口不需要刷新令牌
-  const whiteList = [
-    'refresh.admin.token',
-    'logout.admin.user',
-    'login.admin.user'
-  ]
-
-  if (whiteList.indexOf(config.params['method']) >= 0) {
-    return
-  }
-
-  console.log('awadmin:',store.state.awadmin)
-  let userInfo = store.state.careyshop.user.info
-  const nowTime = Math.round(new Date() / 1000) + 100
-
-  if ((nowTime - 3600) > userInfo.token.token_expires && nowTime < userInfo.token.refresh_expires) {
-    service({
-      method: 'post',
-      url: '/v1/admin/',
-      params: {
-        method: 'refresh.admin.token'
-      },
-      data: {
-        refresh: userInfo.token.refresh
-      }
-    })
-      .then(res => {
-        userInfo.token = res.data.token
-        store.dispatch('careyshop/user/set', userInfo, { root: true }).then(() => {})
-        util.cookies.set('token', res.data.token.token)
-      })
-      .catch(err => {
-        errorLog(err)
-      })
-  }
-}
 
 // 重新授权确认
 function reAuthorize() {
@@ -151,25 +140,6 @@ function reAuthorize() {
     })
     .catch(() => {
     })
-}
-
-// 添加默认参数及签名
-function setDefaultParams(config) {
-  const token = util.cookies.get('token')
-  if (!token || token === 'undefined') {
-    return
-  }
-
-  // 业务参数数组不存在则需要创建
-  if (!config.data) {
-    config.data = {}
-  }
-
-  config.data['token'] = token
-  config.data['appkey'] = util.serverConfig.APP_KEY
-  config.data['timestamp'] = Math.round(new Date() / 1000) + 100
-  config.data['format'] = 'json'
-  config.data['sign'] = util.getSign(Object.assign(config.data, config.params))
 }
 
 export default service
