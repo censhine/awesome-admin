@@ -83,7 +83,7 @@
     import util from '@/utils/util'
     export default {
       components:{
-        menuCategory: ()=>import('@/components/zis-menu-category')
+        menuCategory: ()=>import('@/components/aw-menu-category')
       },
         props:{
           formData: {

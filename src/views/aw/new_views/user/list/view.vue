@@ -97,7 +97,7 @@
 </template>
 
 <script>
-    import zTable from '@/components/zis-table'
+    import zTable from '@/components/aw-table'
     import {mapState,mapActions} from 'vuex'
     export default {
         name: "zis-user-list-view",

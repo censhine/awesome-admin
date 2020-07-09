@@ -177,7 +177,7 @@ import { getGoodsCategoryItem } from '@/api/goods/category'
 
 export default {
   components: {
-    'select2':()=>import('@/components/zis-select2'),
+    'select2':()=>import('@/components/aw-select2'),
     'csUpload': () => import('@/components/cs-upload'),
     'csStorage': () => import('@/components/cs-storage'),
     'add': ()=>import('../../add')

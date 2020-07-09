@@ -238,7 +238,7 @@
 
 <script>
   import {getAxiosApi} from "@/api/requestData";
-  import Address from '@/components/zis-address';
+  import Address from '@/components/aw-address';
 	export default {
 		components: {
 			Address
